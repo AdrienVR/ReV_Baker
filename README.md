@@ -7,7 +7,7 @@ Josephine Baker's Virtual House in Unity or OpenGL
 
 ## Software
 
-| ![Unity3D](https://raw.githubusercontent.com/AdrienVR/CTR2/master/unity.png "Unity3D") |
+| ![Python 2.7](https://www.python.org/static/img/python-logo.png "Python 2.7") |
 |:----:|
 
 ## Authors
@@ -15,3 +15,7 @@ Josephine Baker's Virtual House in Unity or OpenGL
 Adrien Vernotte  
 
 Jonathan Pennec  
+
+Mathieu Quentel
+
+Erwan Bernard
