@@ -8,7 +8,7 @@ import pyglet
 from pyglet.gl import *
 #from OpenGL.GLU import *
 #from OpenGL.GL import *
-import Image
+#import Image
 import os.path
 import sys
 import math

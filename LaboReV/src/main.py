@@ -17,6 +17,7 @@ flag_resizable  = True
 try:
 	config = Config(sample_buffer=1, samples=4, depth_size=16, double_buffer=True)
 	window = pyglet.window.Window(resizable=True, config=config)
+        window.set_exclusive_mouse(True)
 	#window = pyglet.window.Window(fullscreen=flag_fullscreen,resizable=flag_resizable)
 except:
 	window = pyglet.window.Window(fullscreen=flag_fullscreen,resizable=flag_resizable)

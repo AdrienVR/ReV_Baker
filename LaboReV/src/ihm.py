@@ -30,9 +30,9 @@ class Wimp :
 		elif self.versBas : 
 			self.camera.monter(-0.1)
 		elif self.aGauche :
-			self.camera.gauche(0.1)
+			self.camera.gauche(0.25)
 		elif self.aDroite :
-			self.camera.gauche(-0.1)
+			self.camera.gauche(-0.25)
 
 		else:
 			pass
@@ -47,6 +47,14 @@ class Wimp :
 		elif symbol == pyglet.window.key.LEFT : 
 			self.aGauche = True
 		elif symbol == pyglet.window.key.RIGHT : 
+			self.aDroite = True
+                elif symbol == pyglet.window.key.Z : 
+			self.enAvant = True
+		elif symbol == pyglet.window.key.S : 
+			self.enArriere = True
+		elif symbol == pyglet.window.key.Q : 
+			self.aGauche = True
+		elif symbol == pyglet.window.key.D : 
 			self.aDroite = True
 		elif symbol == pyglet.window.key.H :
 			self.versHaut = True
@@ -68,6 +76,14 @@ class Wimp :
 			self.aGauche = False
 		elif symbol == pyglet.window.key.RIGHT : 
 			self.aDroite = False
+                elif symbol == pyglet.window.key.Z : 
+			self.enAvant = False
+		elif symbol == pyglet.window.key.S : 
+			self.enArriere=False
+		elif symbol == pyglet.window.key.Q : 
+			self.aGauche = False
+		elif symbol == pyglet.window.key.D : 
+			self.aDroite = False
 		elif symbol == pyglet.window.key.H :
 			self.versHaut = False
 		elif symbol == pyglet.window.key.B : 
@@ -79,8 +95,8 @@ class Wimp :
 	def on_mouse_drag(self,x,y,dx,dy):
 		#print "DX = ", dx
 		if dx < -1 : 
-			self.camera.tourner(math.pi/180.0)
+			self.camera.tourner(2*math.pi/180.0)
 		elif dx > 1 : 
-			self.camera.tourner(-math.pi/180.0)
+			self.camera.tourner(-2*math.pi/180.0)
 			
 
