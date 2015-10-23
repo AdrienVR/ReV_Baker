@@ -43,14 +43,14 @@ class Fabrique :
     self.monde.ajouter(decor=le_tableau)
 
     for piece in self.maison.keys():
-      self.maisonModels[piece] = visu.Objet(maillage=visu.Obj(url="../data/baker/"+piece+".obj"))
+      self.maisonModels[piece] = visu.Objet(maillage=visu.ObjY(url="../data/baker/"+piece+".obj"))
       self.maisonModels[piece].placer(geo.Vec3((self.maison[piece])))
       self.monde.ajouter(decor=self.maisonModels[piece])
       
-##    le_pingouin = visu.Objet(maillage=visu.Obj(url="../data/obj/pingouin/p.obj"))
-##    le_pingouin.placer(geo.Vec3((-2.0,3.0,0.0)))
-##    le_pingouin.orienter(45.0*math.pi/180.0)
-##    self.monde.ajouter(decor=le_pingouin)
+    le_pingouin = visu.Objet(maillage=visu.Obj(url="../data/obj/pingouin/p.obj"))
+    le_pingouin.placer(geo.Vec3((-2.0,3.0,0.0)))
+    le_pingouin.orienter(45.0*math.pi/180.0)
+    self.monde.ajouter(decor=le_pingouin)
     
     une_activite = simu.Activite(id="act-01")
     une_activite.start()

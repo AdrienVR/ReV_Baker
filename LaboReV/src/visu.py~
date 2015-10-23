@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 
 import pyglet
 from pyglet.gl import *
@@ -335,7 +334,7 @@ class ObjY(Maillage):
 	def __init__(self,**attributs):
 		Maillage.__init__(self)
 		self.url = attributs.get("url","../data/obj/pingouin/p.obj")
-		self.model = wavefront.WavefrontModel()
+		self.model = formes.wavefront.WavefrontModel()
 		self.model.LoadFile(self.url)
 
 	def draw(self):
