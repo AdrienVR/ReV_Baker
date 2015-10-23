@@ -8,6 +8,20 @@ import simu
 class Fabrique : 
   
   def __init__(self,le_monde):
+    self.maison = {"f1/sol_f1" : (0, 0, 2.3),
+                      "f1/couloir_f1" : (0, 0, 2.3),
+                      "f1/salon_f1" : (2, 15, 2.3),
+                      "f1/eau_f1" : (2, 6, 2.3),
+                      "f1/petitSalon_f1" : (0, 0, 2.3),
+                      "f1/cafe_f1" : (6, 2, 2.3),
+                      "f1/salle1_f1" : (10, 19, 2.3),
+
+                      "f2/sol_f2" : (0, 0, 4.6),
+                      "f2/piscine_f2" : (0, 0, 4.6),
+                      "f2/salles_f2" : (3, 15, 4.6),
+                      "f2/couloir_f2" : (8, 16, 4.6),
+                      "f2/manger_f2" : (7.5, 6, 4.6)}
+    self.maisonModels = {}
     self.monde = le_monde
     
   def fabriquer(self):
@@ -27,10 +41,15 @@ class Fabrique :
     le_tableau.placer(geo.Vec3((5.0,5.0,0.0)))
     self.monde.ajouter(decor=le_tableau)
 
-    le_pingouin = visu.Objet(maillage=visu.Obj(url="../data/obj/pingouin/p.obj"))
-    le_pingouin.placer(geo.Vec3((-2.0,3.0,0.0)))
-    le_pingouin.orienter(45.0*math.pi/180.0)
-    self.monde.ajouter(decor=le_pingouin)
+    for piece in self.maison.keys():
+      self.maisonModels[piece] = visu.Objet(maillage=visu.Obj(url="../data/baker/"+piece+".obj"))
+      self.maisonModels[piece].placer(geo.Vec3((self.maison[piece])))
+      self.monde.ajouter(decor=self.maisonModels[piece])
+      
+##    le_pingouin = visu.Objet(maillage=visu.Obj(url="../data/obj/pingouin/p.obj"))
+##    le_pingouin.placer(geo.Vec3((-2.0,3.0,0.0)))
+##    le_pingouin.orienter(45.0*math.pi/180.0)
+##    self.monde.ajouter(decor=le_pingouin)
     
     une_activite = simu.Activite(id="act-01")
     une_activite.start()

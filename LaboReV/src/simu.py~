@@ -52,7 +52,6 @@ class Activite :
     self.actif = False
   
   def actualiser(self,t,dt):
-    pass
 
 #    if self.actif : 
  #     print "ACTIVITE : ", t, " - ", dt
