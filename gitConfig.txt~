@@ -1,0 +1,2 @@
+git config --global http.proxy http://a1vernot:cqb3880wp@proxy.enib.fr:3128
+git config --global http.proxy https://a1vernot:cqb3880wp@proxy.enib.fr:3128
