@@ -20,7 +20,7 @@ class Wimp :
 		self.surgauche   = False
 		self.surDroite   = False
 		self.enableMouseMove = False
-		self.rotationSpeed = 3.5
+		self.rotationSpeed = 2
 
 	def actualiser(self,dt):
 		if self.enAvant : 

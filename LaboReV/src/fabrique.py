@@ -23,7 +23,6 @@ class Fabrique :
 ##	"rdc/concierge_rdc" : (7,5, 2, 0),
 
 	"f1/sol_f1" : (0, 0, 2.3),
-	"f1/sol_f1" : (0, 0, 2.3),
 	"f1/couloir_f1" : (0, 0, 2.3),
 	"f1/salon_f1" : (2, 15, 2.3),
 	"f1/eau_f1" : (2, 6, 2.3),
@@ -41,6 +40,7 @@ class Fabrique :
 	
     self.transparentMaison = {
 		"f1/eau_f1_transparent" : (2, 6, 2.3),
+		"f1/transparent_f1" : (0, 0, 2.3),
 	}
 	
     self.maisonModels = {}

@@ -129,11 +129,11 @@ class ObjetBougeant(Objet):
 		self.initialized = False
 		self.lastTime = time.time()
 		self.model = None
-		self.speed = 50
+		self.speed = 0.1
 
 	def dessiner(self):
 		
-		if self.model != None and self.initialized:
+		if self.initialized:
 			deltaTime = time.time() - self.lastTime
 			self.lastTime = time.time()
 			self.model.offsetTexCoord += self.speed * deltaTime
@@ -144,6 +144,7 @@ class ObjetBougeant(Objet):
 				self.model.offsetTexCoord = 0
 				self.model.buildDisplayList = False
 				self.lastTime = time.time()
+				self.initialized = True
 				
 			tx, ty, tz = self.repere.o.getCoordonnees()
 			cap        = self.repere.angleDegre
