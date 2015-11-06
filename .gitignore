@@ -37,3 +37,8 @@ ehthumbs.db
 Thumbs.db
 Temp/
 Library/
+*.odt#
+*.pyo
+*.pyc
+*.py~
+ihm.pyc

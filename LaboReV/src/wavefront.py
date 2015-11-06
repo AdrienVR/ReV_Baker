@@ -258,9 +258,13 @@ class WavefrontModel(AbstractModel):
 				elif command == 'map_Kd':
 					modelPath = os.path.split(fileName)[0]
 					mapKd = os.path.join(modelPath, data[0])
-					textureRepertory = "../data/textures/"
-					fileTextureName = mapKd.split("/")[-1]
-					fileName = textureRepertory + fileTextureName
+					textureRepertory = os.path.join("..","data","textures")
+					if ("/" in mapKd):
+						fileTextureName = mapKd.split("/")[-1].split("\\")[-1]
+					else:
+						fileTextureName = mapKd.split("\\")[-1].split("/")[-1]
+					print fileTextureName
+					fileName = os.path.join(textureRepertory, fileTextureName)
 					material.mapKd = fileName
 					material.texture = catalogueTextures.chargerTexture(material.mapKd)
 					if material.texture != None :
