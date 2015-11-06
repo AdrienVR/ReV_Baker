@@ -10,12 +10,15 @@ class Monde :
     self.horloge = 0.0
     self.camera = visu.Camera()
     self.decor  = []
+    self.transparentDecor  = []
     self.activites = []
     self.annuaire = {}
     
   def dessiner(self):
     self.camera.lookAt()
     for x in self.decor :
+      x.dessiner()
+    for x in self.transparentDecor :
       x.dessiner()
       
   def actualiser(self,dt):
@@ -28,6 +31,10 @@ class Monde :
       self.decor.append(decor)
     if activite != None :
       self.activites.append(activite)
+      
+  def ajouterTransparent(self,decor=None):
+    if decor != None :
+      self.transparentDecor.append(decor)
       
   def enregistrer(self,nom,obj):
     self.annuaire[nom] = obj

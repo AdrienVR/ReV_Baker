@@ -67,11 +67,19 @@ def on_key_release(symbol,modifiers):
 	
 @window.event
 def on_mouse_press(x,y,bouton,modifiers):
-	pass
+	lInteracteur.on_mouse_press(x,y,bouton,modifiers)
+	
+@window.event
+def on_mouse_release(x,y,bouton,modifiers):
+	lInteracteur.on_mouse_release(x,y,bouton,modifiers)
 
 @window.event
 def on_mouse_drag(x,y,dx,dy,boutons,modifiers):	
 	lInteracteur.on_mouse_drag(x,y,dx,dy)
+	
+@window.event
+def on_mouse_motion(x, y, dx, dy):
+	lInteracteur.on_mouse_motion(x,y,dx,dy)
 	
 def updateRapide(dt):
 	lInteracteur.actualiser(dt)

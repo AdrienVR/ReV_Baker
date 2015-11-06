@@ -1,46 +1,35 @@
-# Blender MTL File: 'None'
-# Material Count: 4
-newmtl Mur.001
+# Blender MTL File: 'eau_f1.blend'
+# Material Count: 3
+
+newmtl Ceramic
 Ns 0.000000
 Ka 0.000000 0.000000 0.000000
 Kd 0.512000 0.512000 0.512000
 Ks 0.800000 0.800000 0.800000
+Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd Ceramic.jpg
-
+map_Kd textures\Ceramic.jpg
 
 newmtl Mur.001_ext_mur.png
 Ns 0.000000
 Ka 0.000000 0.000000 0.000000
 Kd 0.512000 0.512000 0.512000
 Ks 0.800000 0.800000 0.800000
+Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd /home/e2011/a1vernot/REV/Baker_git/LaboReV/data/textures/ext_mur.png
-
+map_Kd textures\ext_mur.png
 
 newmtl MurIn.001
 Ns 92.156863
 Ka 0.000000 0.000000 0.000000
 Kd 0.512000 0.512000 0.512000
 Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd pilier1.png
-
-
-newmtl MurIn.001_water.jpg
-Ns 92.156863
-Ka 0.000000 0.000000 0.000000
-Kd 0.512000 0.512000 0.512000
-Ks 0.500000 0.500000 0.500000
-Ni 1.000000
-d 0.5
-illum 2
-map_Kd /home/e2011/a1vernot/REV/Baker_git/LaboReV/data/textures/water.jpg
-
-
+map_Kd textures\wall.png

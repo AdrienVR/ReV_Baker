@@ -42,3 +42,10 @@ Library/
 *.pyc
 *.py~
 ihm.pyc
+*.blend
+eau_f1.blend
+/LaboReV/data/baker/f1/Ceramic.jpg
+/LaboReV/data/baker/f1/pilier1.png
+*.blend1
+*.mtl~
+/LaboReV/data/baker/f1/textures
