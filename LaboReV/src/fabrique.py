@@ -36,13 +36,13 @@ class Fabrique :
 	"f2/couloir_f2" : (8, 16, 4.6),
 	"f2/manger_f2" : (7.5, 6, 4.6)
     }
-	
-	
+
+
     self.transparentMaison = {
 		"f1/eau_f1_transparent" : (2, 6, 2.3),
 		"f1/transparent_f1" : (0, 0, 2.3),
 	}
-	
+
     self.maisonModels = {}
     self.monde = le_monde
 
@@ -76,10 +76,16 @@ class Fabrique :
       self.maisonModels[piece].placer(geo.Vec3((self.transparentMaison[piece])))
       self.monde.ajouterTransparent(decor=self.maisonModels[piece])
 
-    le_pingouin = visu.Objet(maillage=visu.Obj(url="../data/obj/pingouin/p.obj"))
-    le_pingouin.placer(geo.Vec3((-2.0,3.0,0.0)))
-    le_pingouin.orienter(45.0*math.pi/180.0)
-    self.monde.ajouter(decor=le_pingouin)
+      le_guide = visu.Objet(maillage=visu.Obj(url="../data/obj/pingouin/p.obj"))
+      le_guide.placer(geo.Vec3((-2.0,3.0,0.0)))
+      le_guide.orienter(45.0*math.pi/180.0)
+      self.monde.ajouter(decor=le_guide)
+
+    suivi_guide = simu.ActiviteGuide(id="visite_pingouin", objet=le_guide, camera=self.monde.camera)
+    suivi_guide.start()
+    self.monde.ajouter(activite=suivi_guide)
+
+    self.monde.guide = le_guide
 
     une_activite = simu.Activite(id="act-01")
     une_activite.start()

@@ -53,7 +53,7 @@ def on_resize(width, height):
 def on_draw():
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 	glLoadIdentity()
-	leMonde.dessiner() 
+	leMonde.dessiner()
 
 @window.event
 def on_key_press(symbol,modifiers):
