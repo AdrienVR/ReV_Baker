@@ -45,9 +45,9 @@ def charger_texture(nom,alias=None):
 	return texture
 
 
-# =====================================================================================		
+# =====================================================================================
 
-class Camera : 
+class Camera :
 
 	def __init__(self):
 		self.repere = geo.Repere()
@@ -60,55 +60,55 @@ class Camera :
 		dx,dy,dz = self.repere.u.getCoordonnees()
 		glLoadIdentity()
 		gluLookAt(tx,ty,tz,tx+dx,ty+dy,tz+dz,0.0,0.0,1.0)
-		
+
 	def placer(self,p):
 	  self.repere.placer(p)
-	
+
 	def orienter(self,cap):
 	  self.repere.orienter(cap)
-		
+
 	def avancer(self,dl):
 	  self.repere.avancer(dl)
-	
+
 	def monter(self,dh):
 	  self.repere.monter(dh)
-	
+
 	def gauche(self,dl):
 	  self.repere.gauche(dl)
-	
+
 	def tourner(self,dCap):
 	  self.repere.tourner(dCap)
 
 # =====================================================================================
 
-class Objet : 
-  
+class Objet :
+
   def __init__(self, repere=None, maillage=None):
     if repere == None :
       self.repere = geo.Repere()
     else:
       self.repere = repere
-      
+
     self.maillage = maillage
-    
+
   def placer(self,p):
     self.repere.placer(p)
-    
+
   def orienter(self,cap):
     self.repere.orienter(cap)
-    
+
   def avancer(self,dl):
     self.repere.avancer(dl)
-	
+
   def monter(self,dh):
     self.repere.monter(dh)
-	
+
   def gauche(self,dl):
     self.repere.gauche(dl)
-	
+
   def tourner(self,dCap):
     self.repere.tourner(dCap)
-    
+
   def dessiner(self):
     if self.maillage != None :
       tx, ty, tz = self.repere.o.getCoordonnees()
@@ -118,10 +118,10 @@ class Objet :
       glRotatef(cap, 0.0,0.0,1.0)
       self.maillage.draw()
       glPopMatrix()
-      
 
-# =====================================================================================		
-class Maillage : 
+
+# =====================================================================================
+class Maillage :
 
 	def __init__(self):
 		self.perceptible = True
@@ -130,7 +130,7 @@ class Maillage :
 	def draw(self):
 		pass
 
-# =====================================================================================	 
+# =====================================================================================
 
 class Sphere(Maillage):
 
@@ -172,7 +172,7 @@ class Triedre(Maillage):
 # =====================================================================================
 
 class Panneau(Maillage):
-  
+
 	def __init__(self,**attributs):
 		Maillage.__init__(self)
 		self.visible = True
@@ -183,13 +183,13 @@ class Panneau(Maillage):
 		self.largeur = attributs.get('largeur',1.0)
 		self.hauteur = attributs.get('hauteur',1.0)
 		self.epaisseur = attributs.get('epaisseur',0.01)
-		
+
 	def draw(self):
-		if self.perceptible : 
+		if self.perceptible :
 			glPushMatrix()
 			glTranslatef(0.0,- self.epaisseur/2.0,0.0)
 			glScalef(self.largeur,self.epaisseur,self.hauteur)
-			
+
 			glBindTexture(GL_TEXTURE_2D,self.recto.id)
 			glBegin(GL_QUADS)
 			glTexCoord2f(0.0, 0.0)
@@ -201,7 +201,7 @@ class Panneau(Maillage):
 			glTexCoord2f(0.0, 1.0)
 			glVertex3f(1.0, 1.0, 1.0)
 			glEnd()
-			
+
 			glBindTexture(GL_TEXTURE_2D,self.verso.id)
 			glBegin(GL_QUADS)
 			glTexCoord2f(0.0, 0.0)
@@ -213,12 +213,12 @@ class Panneau(Maillage):
 			glTexCoord2f(0.0, 1.0)
 			glVertex3f(0.0, 0.0, 1.0)
 			glEnd()
-			
-			glPopMatrix()
-			
-# =====================================================================================			
 
-class Tableau(Maillage) : 
+			glPopMatrix()
+
+# =====================================================================================
+
+class Tableau(Maillage) :
 	def __init__(self,**attributs):
 		Maillage.__init__(self)
 		self.visible = True
@@ -272,7 +272,7 @@ class Mur(Maillage):
 		self.visible = True
 		self.hauteur = attributs.get("hauteur",2.5)
 		texture = attributs.get('texture',"../data/textures/dante.jpg")
-		self.texture = TextureCatalog().loadTexture(texture) 
+		self.texture = TextureCatalog().loadTexture(texture)
 		self.v = []
 		self.parse(attributs.get("points",None))
 
@@ -288,7 +288,7 @@ class Mur(Maillage):
 	def draw(self):
 		glBindTexture(GL_TEXTURE_2D,self.texture.id)
 		h = self.hauteur
-		
+
 		for i in range(len(self.v)-1):
 			x0, y0 = self.v[i]
 			x1, y1 = self.v[i+1]
@@ -347,21 +347,21 @@ class ObjY(Maillage):
 
 # =====================================================================================
 
-class Sol(Maillage) : 
+class Sol(Maillage) :
 	def __init__(self,**attributs):
 		Maillage.__init__(self)
 		self.size   = attributs.get('size',500)
-		textureName = attributs.get('texture','../data/textures/moquette.jpg')
+		textureName = attributs.get('texture','../data/textures/herbe.jpg')
 		self.texture = TextureCatalog().loadTexture(textureName)
 		# self.facteurTexture = getVal(attr,float,"facteurTexture",1.0)
-	
+
 	def draw(self):
 
 		#size = self.size
 		if self.perceptible:
 			size=100
 			fz = 1.0
-		
+
 			glBindTexture(GL_TEXTURE_2D,self.texture.id)
 			glBegin(GL_QUADS)
 			glTexCoord2f(0.0,0.0)
@@ -381,7 +381,7 @@ class Ciel(Maillage):
 		def __init__(self,**attributs):
 			Maillage.__init__(self)
 			self.size = attributs.get('size',500.0)
-	
+
 			textureName = attributs.get('texture','../data/skyboxes/ciel.jpg')
 			image = pyglet.image.load(textureName)
 			imageSeq = pyglet.image.ImageGrid(image, 3, 4)
@@ -391,15 +391,15 @@ class Ciel(Maillage):
 			self.textureFT = imageSeq[5].get_texture()
 			self.textureRT = imageSeq[6].get_texture()
 			self.textureBK = imageSeq[7].get_texture()
-			self.textureFactor = 1.0	
-	
+			self.textureFactor = 1.0
+
 		def draw(self):
 				if self.perceptible :
 					size = self.size
 					halfsize = (size/2)
 					halfsizec = halfsize*1.01 #halfsize corrected
 					tf = self.textureFactor
-		
+
 					glPushMatrix()
 					glRotatef(90.0,1.0,0.0,0.0)
 
@@ -477,4 +477,3 @@ class Ciel(Maillage):
 					glEnd()
 
 					glPopMatrix()
-								
