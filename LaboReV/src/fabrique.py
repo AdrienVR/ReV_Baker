@@ -65,10 +65,16 @@ class Fabrique :
       self.maisonModels[piece].placer(geo.Vec3((self.maison[piece])))
       self.monde.ajouter(decor=self.maisonModels[piece])
 
-    le_pingouin = visu.Objet(maillage=visu.Obj(url="../data/obj/pingouin/p.obj"))
-    le_pingouin.placer(geo.Vec3((-2.0,3.0,0.0)))
-    le_pingouin.orienter(45.0*math.pi/180.0)
-    self.monde.ajouter(decor=le_pingouin)
+    le_guide = visu.Objet(maillage=visu.Obj(url="../data/obj/pingouin/p.obj"))
+    le_guide.placer(geo.Vec3((-2.0,3.0,0.0)))
+    le_guide.orienter(45.0*math.pi/180.0)
+    self.monde.ajouter(decor=le_guide)
+
+    suivi_guide = simu.ActiviteGuide(id="visite_pingouin", objet=le_guide, camera=self.monde.camera)
+    suivi_guide.start()
+    self.monde.ajouter(activite=suivi_guide)
+
+    self.monde.guide = le_guide
 
     une_activite = simu.Activite(id="act-01")
     une_activite.start()

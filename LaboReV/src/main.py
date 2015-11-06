@@ -17,8 +17,8 @@ flag_resizable  = True
 try:
 	config = Config(sample_buffer=1, samples=4, depth_size=16, double_buffer=True)
 	window = pyglet.window.Window(resizable=True, config=config)
-        window.set_exclusive_mouse(True)
-	#window = pyglet.window.Window(fullscreen=flag_fullscreen,resizable=flag_resizable)
+	window.set_exclusive_mouse(True)
+
 except:
 	window = pyglet.window.Window(fullscreen=flag_fullscreen,resizable=flag_resizable)
 
@@ -53,26 +53,26 @@ def on_resize(width, height):
 def on_draw():
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 	glLoadIdentity()
-	leMonde.dessiner() 
+	leMonde.dessiner()
 
 @window.event
 def on_key_press(symbol,modifiers):
 	lInteracteur.on_key_press(symbol)
 
-	
+
 @window.event
 def on_key_release(symbol,modifiers):
 	lInteracteur.on_key_release(symbol)
 
-	
+
 @window.event
 def on_mouse_press(x,y,bouton,modifiers):
 	pass
 
 @window.event
-def on_mouse_drag(x,y,dx,dy,boutons,modifiers):	
+def on_mouse_drag(x,y,dx,dy,boutons,modifiers):
 	lInteracteur.on_mouse_drag(x,y,dx,dy)
-	
+
 def updateRapide(dt):
 	lInteracteur.actualiser(dt)
 	leMonde.actualiser(dt)
@@ -80,14 +80,12 @@ def updateRapide(dt):
 def updateLent(dt):
 	pass
 
-      
+
 import sys
 
 if __name__ == "__main__":
-	print ">> ", sys.argv
+	print(">> ", sys.argv)
 	setup()
 	pyglet.clock.schedule_interval(updateRapide, 1.0/30.0)
 	pyglet.clock.schedule_interval(updateLent,1.0/10.0)
 	pyglet.app.run()
-
-
