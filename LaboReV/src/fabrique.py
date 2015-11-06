@@ -48,15 +48,15 @@ class Fabrique :
     le_ciel = visu.Objet(maillage = visu.Ciel())
     self.monde.ajouter(decor=le_ciel)
 
-    le_tableau = visu.Objet(maillage=visu.Tableau(recto="../data/textures/gris.jpg",\
-                                                  verso="../data/textures/Ceramic.jpg",\
-                                                  largeur=2.0,hauteur=3.0,epaisseur=0.1))
-    le_tableau.placer(geo.Vec3((0.0,0.0,2.0)))
-    self.monde.ajouter(decor=le_tableau)
+    #le_tableau = visu.Objet(maillage=visu.Tableau(recto="../data/textures/gris.jpg",\
+    #                                              verso="../data/textures/Ceramic.jpg",\
+    #                                              largeur=2.0,hauteur=3.0,epaisseur=0.1))
+    #le_tableau.placer(geo.Vec3((0.0,0.0,2.0)))
+    #self.monde.ajouter(decor=le_tableau)
 
-    le_tableau = visu.Objet(maillage=visu.Panneau(recto="../data/textures/tree1.png",\
-                                                  verso="../data/textures/tree1.png",\
-                                                  largeur=6.0,hauteur=12.0,epaisseur=0.1))
+    #le_tableau = visu.Objet(maillage=visu.Panneau(recto="../data/textures/tree1.png",\
+    #                                              verso="../data/textures/tree1.png",\
+    #                                              largeur=6.0,hauteur=12.0,epaisseur=0.1))
     #le_tableau.placer(geo.Vec3((5.0,5.0,0.0)))
     #self.monde.ajouter(decor=le_tableau)
 
