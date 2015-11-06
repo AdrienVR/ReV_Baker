@@ -1,24 +1,46 @@
-# Blender MTL File: 'None'
-# Material Count: 2
-newmtl Mur
-Ns 0.000000
-Ka 0.000000 0.000000 0.000000
-Kd 0.640000 0.640000 0.640000
-Ks 0.800000 0.800000 0.800000
-Ni 1.000000
-d 1.000000
-illum 2
-map_Kd /home/e2011/a1vernot/REV/Baker/LaboReV/data/textures/Ceramic.jpg
+# Blender MTL File: 'cafe_f1.blend'
+# Material Count: 4
 
-
-newmtl MurIn
+newmtl Ceramic
 Ns 96.078431
-Ka 0.000000 0.000000 0.000000
+Ka 1.000000 1.000000 1.000000
 Kd 0.640000 0.640000 0.640000
 Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd /home/e2011/a1vernot/REV/Baker/LaboReV/data/textures/pilier1.png
+map_Kd textures\Ceramic.jpg
 
+newmtl Mur.001_ext_mur.png
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd textures\Ceramic.jpg
 
+newmtl Mur.001_ext_mur.png_ext_mur.png.001
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd textures\ext_mur.png
+
+newmtl MurIn.001
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd textures\wall.png
