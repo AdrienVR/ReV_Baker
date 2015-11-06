@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 provides an interface to load and draw Wavefront object files.
 created by: Toby de Havilland
@@ -203,7 +204,6 @@ class WavefrontModel(AbstractModel):
 		AbstractModel.__init__(self)
 
 	def LoadMTL(self, fileName):
-
 		material = None
 		try:
 			fileHandle = file(fileName)
@@ -254,7 +254,11 @@ class WavefrontModel(AbstractModel):
 
 				elif command == 'map_Kd':
 					modelPath = os.path.split(fileName)[0]
-					material.mapKd = os.path.join(modelPath, data[0])
+					mapKd = os.path.join(modelPath, data[0])
+					textureRepertory = "../data/textures/"
+					fileTextureName = mapKd.split("/")[-1]
+					fileName = textureRepertory + fileTextureName
+					material.mapKd = fileName
 					material.texture = catalogueTextures.chargerTexture(material.mapKd)
 					if material.texture != None :
 						material.textureId = material.texture.id
