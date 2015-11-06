@@ -37,6 +37,12 @@ class Fabrique :
 	"f2/couloir_f2" : (8, 16, 4.6),
 	"f2/manger_f2" : (7.5, 6, 4.6)
     }
+	
+	
+    self.transparentMaison = {
+		"f1/eau_f1_transparent" : (2, 6, 2.3),
+	}
+	
     self.maisonModels = {}
     self.monde = le_monde
 
@@ -46,7 +52,7 @@ class Fabrique :
     self.monde.ajouter(decor=le_sol)
 
     le_ciel = visu.Objet(maillage = visu.Ciel())
-    self.monde.ajouter(decor=le_ciel)
+    self.monde.ajouterTransparent(decor=le_ciel)
 
     #le_tableau = visu.Objet(maillage=visu.Tableau(recto="../data/textures/gris.jpg",\
     #                                              verso="../data/textures/Ceramic.jpg",\
@@ -65,11 +71,16 @@ class Fabrique :
       self.maisonModels[piece].placer(geo.Vec3((self.maison[piece])))
       self.monde.ajouter(decor=self.maisonModels[piece])
 
-    le_guide = visu.Objet(maillage=visu.Obj(url="../data/obj/pingouin/p.obj"))
+    for piece in self.transparentMaison.keys():
+      self.maisonModels[piece] = visu.ObjetBougeant(maillage=visu.ObjY(url="../data/baker/"+piece+".obj"))
+      self.maisonModels[piece].placer(geo.Vec3((self.transparentMaison[piece])))
+      self.monde.ajouterTransparent(decor=self.maisonModels[piece])
+	
+	le_guide = visu.Objet(maillage=visu.Obj(url="../data/obj/pingouin/p.obj"))
     le_guide.placer(geo.Vec3((-2.0,3.0,0.0)))
     le_guide.orienter(45.0*math.pi/180.0)
-    self.monde.ajouter(decor=le_guide)
-
+    self.monde.ajouter(decor=le_guide)	
+	
     suivi_guide = simu.ActiviteGuide(id="visite_pingouin", objet=le_guide, camera=self.monde.camera)
     suivi_guide.start()
     self.monde.ajouter(activite=suivi_guide)

@@ -4,6 +4,8 @@ import pyglet
 from pyglet.gl import *
 
 import wavefront
+import time
+
 import geo
 
 class TextureCatalog(object):
@@ -118,6 +120,39 @@ class Objet :
       glRotatef(cap, 0.0,0.0,1.0)
       self.maillage.draw()
       glPopMatrix()
+	  
+	  
+class ObjetBougeant(Objet):
+
+	def __init__(self, repere=None, maillage=None):
+		Objet.__init__(self, repere, maillage)
+		
+		self.initialized = False
+		self.lastTime = time.time()
+		self.model = None
+		self.speed = 50
+
+	def dessiner(self):
+		
+		if self.model != None and self.initialized:
+			deltaTime = time.time() - self.lastTime
+			self.lastTime = time.time()
+			self.model.offsetTexCoord += self.speed * deltaTime
+			
+		if self.maillage != None :
+			if self.initialized == False:
+				self.model = self.maillage.model
+				self.model.offsetTexCoord = 0
+				self.model.buildDisplayList = False
+				self.lastTime = time.time()
+				
+			tx, ty, tz = self.repere.o.getCoordonnees()
+			cap        = self.repere.angleDegre
+			glPushMatrix()
+			glTranslatef(tx,ty,tz)
+			glRotatef(cap, 0.0,0.0,1.0)
+			self.maillage.draw()
+			glPopMatrix()
 
 
 # =====================================================================================
@@ -342,7 +377,7 @@ class ObjY(Maillage):
 		if self.perceptible:
 			glPushMatrix()
 			glRotatef(90.0,1.0,0.0,0.0)
-			self.model.Draw()
+			self.model.DrawQuick()
 			glPopMatrix()
 
 # =====================================================================================

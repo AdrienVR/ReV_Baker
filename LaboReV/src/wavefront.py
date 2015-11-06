@@ -100,6 +100,8 @@ class AbstractModel(object):
 		self.faces = []
 		self.displayListID = None
 		self.texture_images={}
+		self.offsetTexCoord = 0
+		self.buildDisplayList = True
 
 	def __del__(self):
 		self.FreeResources()
@@ -126,11 +128,7 @@ class AbstractModel(object):
 		del self.faces[:]
 
 	def Draw(self):
-
-		vertices = self.vertices
-		texCoords = self.texCoords
-		normals = self.normals
-
+	
 		glLightfv(GL_LIGHT0,GL_POSITION,vec(0.0,10.0,5.0,1.0))
 		glLightfv(GL_LIGHT0,GL_DIFFUSE, vec(1.0,1.0,1.0,1.0))
 
@@ -173,14 +171,14 @@ class AbstractModel(object):
 
 			glBegin(GL_TRIANGLES)
 			for vi, ti, ni in face.triIndices:
-				if len(texCoords):
-					s,t = texCoords[ti]
-					glTexCoord2f(s,t)
-				if len(normals):
-					nx, ny, nz = normals[ni]
+				if len(self.texCoords):
+					s,t = self.texCoords[ti]
+					glTexCoord2f(s+self.offsetTexCoord,t)
+				if len(self.normals):
+					nx, ny, nz = self.normals[ni]
 					glNormal3f(nx,ny,nz)
-				if len(vertices):
-					x, y, z = vertices[vi]
+				if len(self.vertices):
+					x, y, z = self.vertices[vi]
 					glVertex3f(x,y,z)
 			glEnd()
 
@@ -189,18 +187,22 @@ class AbstractModel(object):
 
 	def DrawQuick(self):
 
-		glLoadIdentity()
-		glRotatef(15, 1, 0, 0)
-		glTranslatef(self.position.x, self.position.y, self.position.z)
-		glRotatef(self.rotation.angle,self.rotation.x,self.rotation.y,self.rotation.z)
+		# glLoadIdentity()
+		# glRotatef(15, 1, 0, 0)
+		# glTranslatef(self.position.x, self.position.y, self.position.z)
+		# glRotatef(self.rotation.angle,self.rotation.x,self.rotation.y,self.rotation.z)
 
-		if self.displayListID is None:
-			self.displayListID = glGenLists(1)
-			glNewList(self.displayListID, GL_COMPILE)
+		if self.buildDisplayList:
+			if self.displayListID is None:
+				self.displayListID = glGenLists(1)
+				glNewList(self.displayListID, GL_COMPILE)
+				self.Draw()
+				glEndList()
+
+			glCallList(self.displayListID)
+		else:
 			self.Draw()
-			glEndList()
-
-		glCallList(self.displayListID)
+		
 
 class WavefrontModel(AbstractModel):
 	def __init__(self):
@@ -257,6 +259,7 @@ class WavefrontModel(AbstractModel):
 
 				elif command == 'map_Kd':
 					modelPath = os.path.split(fileName)[0]
+					print material.name, modelPath, fileName
 					mapKd = os.path.join(modelPath, data[0])
 					textureRepertory = os.path.join("..","data","textures")
 					if ("/" in mapKd):
