@@ -168,6 +168,9 @@ class AbstractModel(object):
 			else:
 				glDisable(GL_TEXTURE_2D)
 
+			if material.dissolve:
+				glColor4f(1.0, 1.0, 1.0, material.dissolve);
+
 			glBegin(GL_TRIANGLES)
 			for vi, ti, ni in face.triIndices:
 				if len(texCoords):
