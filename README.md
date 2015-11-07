@@ -1,6 +1,6 @@
 # ReV Baker
 
-Josephine Baker's Virtual House in Unity or OpenGL
+Josephine Baker's Virtual House in OpenGL using pyglet
 
 | ![ReV](https://github.com/AdrienVR/ReV_Baker/blob/master/preview.jpg "Warning, this a preview") |
 |:----:|

@@ -12,7 +12,7 @@ d 1.000000
 illum 2
 map_Kd textures\Ceramic.jpg
 
-newmtl Mur.001_ext_mur.png
+newmtl Ceramic_ext_mur.png.001
 Ns 96.078431
 Ka 1.000000 1.000000 1.000000
 Kd 0.640000 0.640000 0.640000
@@ -21,9 +21,9 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd textures\Ceramic.jpg
+map_Kd textures\ext_mur.png
 
-newmtl Mur.001_ext_mur.png_ext_mur.png.001
+newmtl Mur.001_ext_mur.png
 Ns 96.078431
 Ka 1.000000 1.000000 1.000000
 Kd 0.640000 0.640000 0.640000

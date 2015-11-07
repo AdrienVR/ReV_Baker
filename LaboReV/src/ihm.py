@@ -20,21 +20,23 @@ class Wimp :
 		self.surgauche   = False
 		self.surDroite   = False
 		self.enableMouseMove = False
-		self.rotationSpeed = 2
+		self.rotationSpeed = 3
+		self.movingSpeed = 0.1
+		self.elevatingSpeed = 0.1
 
 	def actualiser(self,dt):
 		if self.enAvant :
-			self.monde.guide.avancer(0.25)
+			self.monde.guide.avancer(self.movingSpeed)
 		elif self.enArriere :
-			self.monde.guide.avancer(-0.25)
+			self.monde.guide.avancer(-self.movingSpeed)
 		elif self.versHaut :
-			self.monde.guide.monter(0.1)
+			self.monde.guide.monter(self.elevatingSpeed)
 		elif self.versBas :
-			self.monde.guide.monter(-0.1)
+			self.monde.guide.monter(-self.elevatingSpeed)
 		elif self.aGauche :
-			self.monde.guide.gauche(0.25)
+			self.monde.guide.gauche(self.movingSpeed)
 		elif self.aDroite :
-			self.monde.guide.gauche(-0.25)
+			self.monde.guide.gauche(-self.movingSpeed)
 
 		else:
 			pass
