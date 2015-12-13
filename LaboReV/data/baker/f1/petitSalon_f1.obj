@@ -1,7 +1,7 @@
-# Blender v2.76 (sub 0) OBJ File: 'petitSalon_f1.blend'
+# Blender v2.76 (sub 0) OBJ File: '1er_4.blend'
 # www.blender.org
 mtllib petitSalon_f1.mtl
-o Cube_Cube.000
+o petit_salon_f1_Cube_Cube.008
 v -1.209927 2.200001 -2.401819
 v -1.209927 1.367692 -1.915995
 v -1.209927 1.367692 -1.226884
@@ -616,7 +616,7 @@ vn -0.881900 0.000000 0.471400
 vn -0.881900 0.000000 -0.471400
 vn -0.931900 0.000000 -0.362600
 vn 1.000000 0.000000 0.001900
-usemtl Mur.001_ext_mur.png
+usemtl extWall
 s off
 f 1/1/1 2/2/1 3/3/1
 f 6/4/1 7/5/1 5/6/1
@@ -675,7 +675,7 @@ f 91/39/3 88/41/3 90/54/3
 f 98/52/3 99/45/3 88/41/3
 f 87/46/3 79/55/3 88/41/3
 f 90/54/3 88/41/3 79/55/3
-usemtl MurIn.001
+usemtl greyDWall
 f 80/56/7 81/57/7 82/58/7
 f 80/56/8 89/59/8 79/60/8
 f 84/61/9 83/62/9 92/63/9

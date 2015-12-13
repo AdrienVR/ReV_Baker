@@ -1,8 +1,8 @@
-# Blender MTL File: 'couloir_f1.blend'
+# Blender MTL File: '1er_4.blend'
 # Material Count: 5
 
 newmtl Ceramic
-Ns 96.078431
+Ns 94.117647
 Ka 1.000000 1.000000 1.000000
 Kd 0.640000 0.640000 0.640000
 Ks 0.500000 0.500000 0.500000
@@ -12,8 +12,8 @@ d 1.000000
 illum 2
 map_Kd textures\Ceramic.jpg
 
-newmtl Marron
-Ns 96.078431
+newmtl blueWall
+Ns 94.117647
 Ka 1.000000 1.000000 1.000000
 Kd 0.640000 0.640000 0.640000
 Ks 0.500000 0.500000 0.500000
@@ -21,10 +21,10 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd textures\marron.jpg
+map_Kd C:\Users\Adrien\Desktop\ENIB\S9\REV\textures\wall_blue.png
 
-newmtl Mur.001_ext_mur.png
-Ns 96.078431
+newmtl extWall
+Ns 94.117647
 Ka 1.000000 1.000000 1.000000
 Kd 0.640000 0.640000 0.640000
 Ks 0.500000 0.500000 0.500000
@@ -34,8 +34,8 @@ d 1.000000
 illum 2
 map_Kd textures\ext_mur.png
 
-newmtl MurIn.001
-Ns 96.078431
+newmtl greyDWall
+Ns 94.117647
 Ka 1.000000 1.000000 1.000000
 Kd 0.640000 0.640000 0.640000
 Ks 0.500000 0.500000 0.500000
@@ -45,8 +45,8 @@ d 1.000000
 illum 2
 map_Kd textures\wall.png
 
-newmtl MurIn.001_wall.png.006
-Ns 96.078431
+newmtl greyDWall_wall.png
+Ns 94.117647
 Ka 1.000000 1.000000 1.000000
 Kd 0.640000 0.640000 0.640000
 Ks 0.500000 0.500000 0.500000

@@ -31,10 +31,11 @@ class Fabrique :
 	"f1/salle1_f1" : (10, 19, 2.3),
 
 	"f2/sol_f2" : (0, 0, 4.6),
-	"f2/piscine_f2" : (0, 0, 4.6),
-	"f2/salles_f2" : (3, 15, 4.6),
-	"f2/couloir_f2" : (8, 16, 4.6),
-	"f2/manger_f2" : (7.5, 6, 4.6)
+	#"f2/piscine_f2" : (0, 0, 4.6),
+	#"f2/salles_f2" : (3, 15, 4.6),
+	#"f2/couloir_f2" : (8, 16, 4.6),
+	#"f2/manger_f2" : (7.5, 6, 4.6),
+	"f2/plafond_f2" : (0, 0, 6.6),
     }
 
 
