@@ -43,6 +43,12 @@ class Fabrique :
 	"f2/plafond_f2" : (0, 0, self.f2height + 2),
     }
 
+    self.emplacements_tableaux = {
+        "A1" : (4.55, 1.5, 0.3, "../data/images/Automobile/Amicar.jpg"),
+        "A2" : (3.15, 0.98, 0.3, "../data/images/Automobile/Autobus.jpg"),
+    }
+    self.tableaux = {}
+
 
     self.transparentMaison = {
 		"rdc/transparent_rdc" : (0, 0, self.rdcheight),
@@ -62,17 +68,12 @@ class Fabrique :
     le_ciel = visu.Objet(maillage = visu.Ciel())
     self.monde.ajouterTransparent(decor=le_ciel)
 
-    #le_tableau = visu.Objet(maillage=visu.Tableau(recto="../data/textures/gris.jpg",\
-    #                                              verso="../data/textures/Ceramic.jpg",\
-    #                                              largeur=2.0,hauteur=3.0,epaisseur=0.1))
-    #le_tableau.placer(geo.Vec3((0.0,0.0,2.0)))
-    #self.monde.ajouter(decor=le_tableau)
-
-    #le_tableau = visu.Objet(maillage=visu.Panneau(recto="../data/textures/tree1.png",\
-    #                                              verso="../data/textures/tree1.png",\
-    #                                              largeur=6.0,hauteur=12.0,epaisseur=0.1))
-    #le_tableau.placer(geo.Vec3((5.0,5.0,0.0)))
-    #self.monde.ajouter(decor=le_tableau)
+    for emplacement_tableau in self.emplacements_tableaux.keys() :
+        self.tableaux[emplacement_tableau] = visu.Objet(maillage=visu.Tableau(recto=self.emplacements_tableaux[emplacement_tableau][3],\
+                                                      verso=self.emplacements_tableaux[emplacement_tableau][3],\
+                                                      largeur=1.0,hauteur=1.0,epaisseur=0.1))
+        self.tableaux[emplacement_tableau].placer(geo.Vec3((self.emplacements_tableaux[emplacement_tableau][0],self.emplacements_tableaux[emplacement_tableau][1],self.emplacements_tableaux[emplacement_tableau][2])))
+        self.monde.ajouter(decor=self.tableaux[emplacement_tableau])
 
     for piece in self.maison.keys():
       self.maisonModels[piece] = visu.Objet(maillage=visu.ObjY(url="../data/baker/"+piece+".obj"))
@@ -85,8 +86,8 @@ class Fabrique :
       self.monde.ajouterTransparent(decor=self.maisonModels[piece])
 
     le_guide = visu.Objet(maillage=visu.Obj(url="../data/obj/pingouin/p.obj"))
-    le_guide.placer(geo.Vec3((-2.0,3.0,0.1)))
-    le_guide.orienter(45.0*math.pi/180.0)
+    le_guide.placer(geo.Vec3((6.6,-0.5,0.1)))
+    le_guide.orienter(90*math.pi/180.0)
     self.monde.ajouter(decor=le_guide)
 
     suivi_guide = simu.ActiviteGuide(id="visite_pingouin", objet=le_guide, camera=self.monde.camera)

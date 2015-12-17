@@ -68,6 +68,8 @@ class Wimp :
 			self.versBas  = True
 		elif symbol == pyglet.window.key.T :
 			self.monde.notifier()
+		elif symbol == pyglet.window.key.C :
+			print("X=" + str(self.monde.guide.repere.o.x) + " Y=" + str(self.monde.guide.repere.o.y) + "Z=" + str(self.monde.guide.repere.o.z))
 		else:
 			pass
 

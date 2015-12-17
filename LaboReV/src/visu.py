@@ -258,42 +258,42 @@ class Tableau(Maillage) :
 	def __init__(self,**attributs):
 		Maillage.__init__(self)
 		self.visible = True
-		recto = attributs.get('recto',"../data/textures/dante.jpg")
+		recto = attributs.get('recto',"../data/textures/acajou.png")
 		self.recto = TextureCatalog().loadTexture(recto)
-		verso = attributs.get('verso',"../data/textures/dante.jpg")
+		verso = attributs.get('verso',"../data/textures/moquette.jpg")
 		self.verso = TextureCatalog().loadTexture(verso)
 		self.largeur = attributs.get('largeur',1.0)
 		self.hauteur = attributs.get('hauteur',1.0)
-		self.epaisseur = attributs.get('epaisseur',0.01)
+		self.epaisseur = attributs.get('epaisseur',0.0)
 
 	def draw(self):
-		if self.perceptible:
+		if self.perceptible :
 			glPushMatrix()
-			glScalef(self.epaisseur,self.largeur/2.0,self.hauteur/2.0)
+			glTranslatef(0.0,- self.epaisseur/2.0,0.0)
+			glScalef(self.largeur,self.epaisseur,self.hauteur)
 
 			glBindTexture(GL_TEXTURE_2D,self.recto.id)
 			glBegin(GL_QUADS)
 			glTexCoord2f(0.0, 0.0)
-			glVertex3f(1.0, -1.0, -1.0)
+			glVertex3f(1.0,1.0,0.0)
 			glTexCoord2f(1.0, 0.0)
-			glVertex3f(1.0, 1.0, -1.0)
+			glVertex3f(0.0, 1.0, 0.0)
 			glTexCoord2f(1.0, 1.0)
-			glVertex3f(1.0, 1.0, 1.0)
+			glVertex3f(0.0, 1.0, 1.0)
 			glTexCoord2f(0.0, 1.0)
-			glVertex3f(1.0, -1.0, 1.0)
+			glVertex3f(1.0, 1.0, 1.0)
 			glEnd()
 
 			glBindTexture(GL_TEXTURE_2D,self.verso.id)
-
 			glBegin(GL_QUADS)
 			glTexCoord2f(0.0, 0.0)
-			glVertex3f(0.0, 1.0, -1.0)
+			glVertex3f(0.0,0.0,0.0)
 			glTexCoord2f(1.0, 0.0)
-			glVertex3f(0.0, -1.0, -1.0)
+			glVertex3f(1.0, 0.0, 0.0)
 			glTexCoord2f(1.0, 1.0)
-			glVertex3f(0.0, -1.0, 1.0)
+			glVertex3f(1.0, 0.0, 1.0)
 			glTexCoord2f(0.0, 1.0)
-			glVertex3f(0.0, 1.0, 1.0)
+			glVertex3f(0.0, 0.0, 1.0)
 			glEnd()
 
 			glPopMatrix()
