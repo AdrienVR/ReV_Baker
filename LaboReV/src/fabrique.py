@@ -85,16 +85,23 @@ class Fabrique :
       self.maisonModels[piece].placer(geo.Vec3((self.transparentMaison[piece])))
       self.monde.ajouterTransparent(decor=self.maisonModels[piece])
 
+    le_visiteur = visu.Objet(maillage=visu.Obj(url="../data/obj/pingouin/p.obj"))
+    le_visiteur.placer(geo.Vec3((6.6,-0.5,0.1)))
+    le_visiteur.orienter(90*math.pi/180.0)
+    self.monde.ajouter(decor=le_visiteur)
+    suivi_visiteur = simu.ActiviteVisiteur(id="visite_pingouin", objet=le_visiteur, camera=self.monde.camera)
+    suivi_visiteur.start()
+    self.monde.ajouter(activite=suivi_visiteur)
+    self.monde.visiteur = le_visiteur
+
     le_guide = visu.Objet(maillage=visu.Obj(url="../data/obj/pingouin/p.obj"))
-    le_guide.placer(geo.Vec3((6.6,-0.5,0.1)))
+    #le_guide.placer(geo.Vec3((6.3,1.1,0.1)))
     le_guide.orienter(90*math.pi/180.0)
     self.monde.ajouter(decor=le_guide)
-
-    suivi_guide = simu.ActiviteGuide(id="visite_pingouin", objet=le_guide, camera=self.monde.camera)
-    suivi_guide.start()
-    self.monde.ajouter(activite=suivi_guide)
-
-    self.monde.guide = le_guide
+    deplacements_guide = simu.ActiviteGuide(id="guide_pingouin", objet=le_guide, visiteur=le_visiteur)
+    deplacements_guide.start()
+    self.monde.ajouter(activite=deplacements_guide)
+    #self.monde.visiteur = le_visiteur
 
     #une_activite = simu.Activite(id="act-01")
     #une_activite.start()

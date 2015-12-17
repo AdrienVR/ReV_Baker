@@ -1,7 +1,7 @@
-import vec3
+import geo
 
 
-class Noeud : 
+class Noeud :
 
 	def __init__(self,v,coutMax=10000.0):
 		self.v = v
@@ -12,12 +12,12 @@ class Noeud :
 	def valeur(self):
 		return self.v
 
-class Graphe : 
+class Graphe :
 	def __init__(self,oriente=True):
 		self.sucs = {}
 		self.sommets = {}
 		self.oriente = oriente
-		
+
 	def coordonnees(self,l):
 		return [self.etiquette(s) for s in l]
 
@@ -46,7 +46,7 @@ class Graphe :
 		else:
 			return l[-1]
 
-	def successeurs(self,s): 
+	def successeurs(self,s):
 		sucs = self.sucs[s]
 		return sucs.keys()
 
@@ -77,9 +77,9 @@ class Graphe :
 def cmpCout(v1,v2):
 	n1, c1 = v1
 	n2, c2 = v2
-	if c1 < c2 : return -1 
+	if c1 < c2 : return -1
         elif c1 > c2 : return 1
-        else: return 0 
+        else: return 0
 
 class Dijkstra :
 
@@ -94,13 +94,13 @@ class Dijkstra :
 	def chercher(self, ori, ext):
 
 		# print "Pour aller de ", ori, " a ", ext
-		
+
 		n = len(self.graphe.sommets)
 
 		# print "Nombre de sommets : ", n
-		
+
 		n_ori = self.graphe.sommets[ori]
-		n_ori.cout = 0.0 
+		n_ori.cout = 0.0
 
 		# Initialisation
 		# --------------
@@ -109,7 +109,7 @@ class Dijkstra :
 		sommets = self.graphe.sommets
 
 		for nom in sommets :
-			noeud = sommets[nom]			 
+			noeud = sommets[nom]
 			noeud.cout = self.coutMax
 			noeud.pred = None
 			noeud.marque = False
@@ -117,14 +117,14 @@ class Dijkstra :
 		n_ori = sommets[ori]
 		n_ori.cout = 0.0
 		n_ori.marque = True
-		
+
 		encore = True
 
 		# print sommets
-		
+
 
 		s0 = ori
-		while encore : 
+		while encore :
 
 			# Mise a jour des successeurs du sommet courant
 			c0 = sommets[s0].cout
@@ -147,8 +147,8 @@ class Dijkstra :
 			# nom,cout = l[0]
 			# sommets[nom].marque = True
 			# s0 = nom
- 
-			if len(l)>0 : 
+
+			if len(l)>0 :
 				x = l[0]
 				# print ">> ", x[0]
 				sommets[x[0]].marque = True
@@ -156,22 +156,22 @@ class Dijkstra :
 			else:
 				encore = False
 			n = n-1
-			encore = (n > 0) 
+			encore = (n > 0)
 
 		# Reconstituer le chemin
 
 		chemin = []
 		# print "Pour aller de ", ori, " a ", ext
 		s0 = ext
-		while s0 != None : 
+		while s0 != None :
 			chemin.append(s0)
 			s0 = sommets[s0].pred
 		chemin.reverse()
 		return chemin
 
-		
-		
-	
+
+
+
 
 def lireGrapheNavigation(nomFichier):
 	gr = Graphe(oriente=False)
@@ -187,7 +187,7 @@ def lireGrapheNavigation(nomFichier):
 				x = float(mots[3])
 				y = float(mots[4])
 				z = float(mots[5])
-				gr.ajouterSommet(nom,vec3.Vec3((x,y,z)))
+				gr.ajouterSommet(nom,geo.Vec3((x,y,z)))
 			elif mots[0] == 'a':
 				ori = mots[1]
 				ext = mots[2]
@@ -199,8 +199,8 @@ def lireGrapheNavigation(nomFichier):
 	f.close()
 
 	return gr
-	
-class Navigateur(Dijkstra) : 
+
+class Navigateur(Dijkstra) :
   def __init__(self,nomFichier):
     Dijkstra.__init__(self,lireGrapheNavigation(nomFichier))
 
@@ -208,14 +208,11 @@ class Navigateur(Dijkstra) :
 
 if __name__ == "__main__":
 
-	import vec3 
+	import geo
 
 	unGraphe = lireGrapheNavigation("graphe.nav")
 	dij = Dijkstra(unGraphe)
-	print unGraphe.coordonnees(dij.chercher("p0","p3"))
-	print dij.trouverChemin(de="p0",a="p3")
+	#print unGraphe.coordonnees(dij.chercher("entree_rdc_1","salle1_rdc_1"))
+	print dij.trouverChemin(de="entree_rdc_1",a="salle1_rdc_1")
 
-	print unGraphe
-
-
-	
+	print unGraphe.etiquette(unGraphe.premierSommet()).x

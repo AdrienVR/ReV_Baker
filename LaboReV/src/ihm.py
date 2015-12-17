@@ -28,17 +28,17 @@ class Wimp :
 	def actualiser(self,dt):
 		self.dt = dt
 		if self.enAvant :
-			self.monde.guide.avancer(self.movingSpeed)
+			self.monde.visiteur.avancer(self.movingSpeed)
 		elif self.enArriere :
-			self.monde.guide.avancer(-self.movingSpeed)
+			self.monde.visiteur.avancer(-self.movingSpeed)
 		elif self.versHaut :
-			self.monde.guide.monter(self.elevatingSpeed)
+			self.monde.visiteur.monter(self.elevatingSpeed)
 		elif self.versBas :
-			self.monde.guide.monter(-self.elevatingSpeed)
+			self.monde.visiteur.monter(-self.elevatingSpeed)
 		elif self.aGauche :
-			self.monde.guide.gauche(self.movingSpeed)
+			self.monde.visiteur.gauche(self.movingSpeed)
 		elif self.aDroite :
-			self.monde.guide.gauche(-self.movingSpeed)
+			self.monde.visiteur.gauche(-self.movingSpeed)
 
 		else:
 			pass
@@ -69,7 +69,7 @@ class Wimp :
 		elif symbol == pyglet.window.key.T :
 			self.monde.notifier()
 		elif symbol == pyglet.window.key.C :
-			print("X=" + str(self.monde.guide.repere.o.x) + " Y=" + str(self.monde.guide.repere.o.y) + "Z=" + str(self.monde.guide.repere.o.z))
+			print("X=" + str(self.monde.visiteur.repere.o.x) + " Y=" + str(self.monde.visiteur.repere.o.y) + "Z=" + str(self.monde.visiteur.repere.o.z))
 		else:
 			pass
 
@@ -111,13 +111,10 @@ class Wimp :
 		self.enableMouseMove = (self.enableMouseMove == False)
 
 	def on_mouse_drag(self,x,y,dx,dy):
-		#print "DX = ", dx
 		if dx < -1 :
-			self.monde.guide.tourner(2*math.pi/180.0 * self.dt * self.rotationSpeed)
-			#self.monde.guide.orienter(2*math.pi/180.0 * self.dt * self.rotationSpeed);
+			self.monde.visiteur.tourner(2*math.pi/180.0 * self.dt * self.rotationSpeed)
 		elif dx > 1 :
-			self.monde.guide.tourner(-2*math.pi/180.0 * self.dt * self.rotationSpeed)
-			#self.monde.guide.orienter(-2*math.pi/180.0 * self.dt * self.rotationSpeed);
+			self.monde.visiteur.tourner(-2*math.pi/180.0 * self.dt * self.rotationSpeed)
 
 	def on_mouse_motion(self,x,y,dx,dy):
 		pass

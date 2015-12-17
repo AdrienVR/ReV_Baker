@@ -52,9 +52,9 @@ class Camera :
 
 	def __init__(self):
 		self.repere = geo.Repere()
-		self.repere.placer(geo.Vec3((-5.0,0.0,0.2)))
+		self.repere.placer(geo.Vec3((-5.0,0.0,0.5)))
 		self.repere.orienter(0.0)
-		self.dist = 1
+		self.dist = 0.5
 
 
 	def lookAt(self):
