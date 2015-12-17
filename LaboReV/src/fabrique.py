@@ -10,17 +10,17 @@ class Fabrique :
   def __init__(self,le_monde):
     self.maison = {
 ##	"rdc/garage_rdc" : (2, 18, 0),
-##	"rdc/cave1_rdc" : (4, 13,5, 0),
+##	"rdc/cave1_rdc" : (4, 13.5, 0),
 ##	"rdc/cave2_rdc" : (10, 13, 0),
-##	"rdc/couloir_rdc" : (4, 11,5, 0),
-##	"rdc/chambre1_rdc" : (1, 6,5, 0),
-##	"rdc/chambre2_rdc" : (1, 9,5, 0),
-##	"rdc/chambre3_rdc" : (1, 13,5, 0),
-##	"rdc/cuisine_rdc" : (1, 3,5, 0),
-##	"rdc/salle1_rdc" : (2, 1,5, 0),
-##	"rdc/salle2_rdc" : (3,5, 1,5, 0),
+##	"rdc/couloir_rdc" : (4, 11.5, 0),
+	"rdc/chambre1_rdc" : (1, 6.5, 0),
+##	"rdc/chambre2_rdc" : (1, 9.5, 0),
+##	"rdc/chambre3_rdc" : (1, 13.5, 0),
+##	"rdc/cuisine_rdc" : (1, 3.5, 0),
+##	"rdc/salle1_rdc" : (2, 1.5, 0),
+##	"rdc/salle2_rdc" : (3.5, 1.5, 0),
 ##	"rdc/entree_rdc" : (6, 3, 0),
-##	"rdc/concierge_rdc" : (7,5, 2, 0),
+##	"rdc/concierge_rdc" : (7.5, 2, 0),
 
 	"f1/sol_f1" : (0, 0, 2.3),
 	"f1/couloir_f1" : (0, 0, 2.3),
@@ -31,10 +31,10 @@ class Fabrique :
 	"f1/salle1_f1" : (10, 19, 2.3),
 
 	"f2/sol_f2" : (0, 0, 4.6),
-	#"f2/piscine_f2" : (0, 0, 4.6),
-	#"f2/salles_f2" : (3, 15, 4.6),
-	#"f2/couloir_f2" : (8, 16, 4.6),
-	#"f2/manger_f2" : (7.5, 6, 4.6),
+	"f2/piscine_f2" : (0, 0, 4.6),
+	"f2/salles_f2" : (3, 15, 4.6),
+	"f2/couloir_f2" : (8, 16, 4.6),
+	"f2/manger_f2" : (6, 4.4, 4.4),
 	"f2/plafond_f2" : (0, 0, 6.6),
     }
 
