@@ -98,7 +98,7 @@ class Wimp :
 			if self.camera.dist == 3 :
 				self.camera.dist = 0
 			else :
-				self.camera.dist = 3
+				self.camera.dist = 1
 		else:
 			pass
 
@@ -112,9 +112,10 @@ class Wimp :
 		#print "DX = ", dx
 		if dx < -1 :
 			self.monde.guide.tourner(2*math.pi/180.0 * self.dt * self.rotationSpeed)
+			#self.monde.guide.orienter(2*math.pi/180.0 * self.dt * self.rotationSpeed);
 		elif dx > 1 :
 			self.monde.guide.tourner(-2*math.pi/180.0 * self.dt * self.rotationSpeed)
-			
-	def on_mouse_motion(self,x,y,dx,dy):
-		pass		
+			#self.monde.guide.orienter(-2*math.pi/180.0 * self.dt * self.rotationSpeed);
 
+	def on_mouse_motion(self,x,y,dx,dy):
+		pass

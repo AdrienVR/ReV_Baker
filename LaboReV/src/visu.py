@@ -52,9 +52,9 @@ class Camera :
 
 	def __init__(self):
 		self.repere = geo.Repere()
-		self.repere.placer(geo.Vec3((-5.0,0.0,1.6)))
+		self.repere.placer(geo.Vec3((-5.0,0.0,0.2)))
 		self.repere.orienter(0.0)
-		self.dist = 3
+		self.dist = 1
 
 
 	def lookAt(self):
@@ -120,25 +120,25 @@ class Objet :
       glRotatef(cap, 0.0,0.0,1.0)
       self.maillage.draw()
       glPopMatrix()
-	  
-	  
+
+
 class ObjetBougeant(Objet):
 
 	def __init__(self, repere=None, maillage=None):
 		Objet.__init__(self, repere, maillage)
-		
+
 		self.initialized = False
 		self.lastTime = time.time()
 		self.model = None
 		self.speed = 0.1
 
 	def dessiner(self):
-		
+
 		if self.initialized:
 			deltaTime = time.time() - self.lastTime
 			self.lastTime = time.time()
 			self.model.offsetTexCoord += self.speed * deltaTime
-			
+
 		if self.maillage != None :
 			if self.initialized == False:
 				self.model = self.maillage.model
@@ -146,7 +146,7 @@ class ObjetBougeant(Objet):
 				self.model.buildDisplayList = False
 				self.lastTime = time.time()
 				self.initialized = True
-				
+
 			tx, ty, tz = self.repere.o.getCoordonnees()
 			cap        = self.repere.angleDegre
 			glPushMatrix()

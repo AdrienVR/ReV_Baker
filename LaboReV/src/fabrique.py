@@ -8,11 +8,11 @@ import simu
 class Fabrique :
 
   def __init__(self,le_monde):
-    
+
     self.rdcheight = 0.1
     self.f1height = self.rdcheight + 2.6
     self.f2height = self.f1height + 2.3
-    
+
     self.maison = {
 	"rdc/garage_rdc" : (2, 18, self.rdcheight),
 	"rdc/cave1_rdc" : (4, 13.5, self.rdcheight),
@@ -46,7 +46,7 @@ class Fabrique :
 
     self.transparentMaison = {
 		"rdc/transparent_rdc" : (0, 0, self.rdcheight),
-		
+
 		"f1/eau_f1_transparent" : (2, 6, self.f1height),
 		"f1/transparent_f1" : (0, 0, self.f1height),
 	}
@@ -84,10 +84,10 @@ class Fabrique :
       self.maisonModels[piece].placer(geo.Vec3((self.transparentMaison[piece])))
       self.monde.ajouterTransparent(decor=self.maisonModels[piece])
 
-      le_guide = visu.Objet(maillage=visu.Obj(url="../data/obj/pingouin/p.obj"))
-      le_guide.placer(geo.Vec3((-2.0,3.0,0.0)))
-      le_guide.orienter(45.0*math.pi/180.0)
-      self.monde.ajouter(decor=le_guide)
+    le_guide = visu.Objet(maillage=visu.Obj(url="../data/obj/pingouin/p.obj"))
+    le_guide.placer(geo.Vec3((-2.0,3.0,0.1)))
+    le_guide.orienter(45.0*math.pi/180.0)
+    self.monde.ajouter(decor=le_guide)
 
     suivi_guide = simu.ActiviteGuide(id="visite_pingouin", objet=le_guide, camera=self.monde.camera)
     suivi_guide.start()
@@ -95,6 +95,6 @@ class Fabrique :
 
     self.monde.guide = le_guide
 
-    une_activite = simu.Activite(id="act-01")
-    une_activite.start()
-    self.monde.ajouter(activite=une_activite)
+    #une_activite = simu.Activite(id="act-01")
+    #une_activite.start()
+    #self.monde.ajouter(activite=une_activite)

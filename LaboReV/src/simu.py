@@ -73,9 +73,11 @@ class ActiviteGuide(Activite) :
         #self.objet.placer(geo.Vec3((-2.0+t,3.0+t*t,0.0)))
         #self.objet.orienter(t)
         self.cam.orienter(self.objet.repere.angle)
+        self.objet.orienter(self.objet.repere.angle)
         xCam = self.objet.repere.o.x - self.cam.dist*math.cos(self.objet.repere.angle)
         yCam = self.objet.repere.o.y - self.cam.dist*math.sin(self.objet.repere.angle)
-        self.cam.placer(geo.Vec3((xCam,yCam,self.objet.repere.o.z+1.0)))
+
+        self.cam.placer(geo.Vec3((xCam,yCam,self.objet.repere.o.z+0.5)))
 
 #    if self.actif :
  #     print "ACTIVITE : ", t, " - ", dt
