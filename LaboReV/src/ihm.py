@@ -20,11 +20,13 @@ class Wimp :
 		self.surgauche   = False
 		self.surDroite   = False
 		self.enableMouseMove = False
-		self.rotationSpeed = 3
+		self.rotationSpeed = 45
 		self.movingSpeed = 0.1
 		self.elevatingSpeed = 0.1
+		self.dt = 0.02
 
 	def actualiser(self,dt):
+		self.dt = dt
 		if self.enAvant :
 			self.monde.guide.avancer(self.movingSpeed)
 		elif self.enArriere :
@@ -109,15 +111,10 @@ class Wimp :
 	def on_mouse_drag(self,x,y,dx,dy):
 		#print "DX = ", dx
 		if dx < -1 :
-			self.monde.guide.tourner(2*math.pi/180.0)
+			self.monde.guide.tourner(2*math.pi/180.0 * self.dt * self.rotationSpeed)
 		elif dx > 1 :
-			self.monde.guide.tourner(-2*math.pi/180.0)
+			self.monde.guide.tourner(-2*math.pi/180.0 * self.dt * self.rotationSpeed)
+			
 	def on_mouse_motion(self,x,y,dx,dy):
-		return
-		if self.enableMouseMove:
-			#print "DX = ", dx
-			if dx < -1 : 
-				self.camera.tourner(2*math.pi/180.0 * self.rotationSpeed)
-			elif dx > 1 : 
-				self.camera.tourner(-2*math.pi/180.0 * self.rotationSpeed)			
+		pass		
 

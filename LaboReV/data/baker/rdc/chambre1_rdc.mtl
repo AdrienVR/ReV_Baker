@@ -1,5 +1,5 @@
-# Blender MTL File: 'rdcc_2.blend'
-# Material Count: 2
+# Blender MTL File: 'rdcc_3.blend'
+# Material Count: 4
 
 newmtl Ceramic
 Ns 94.117647
@@ -10,10 +10,32 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd C:\Users\Adrien\Desktop\ENIB\S9\REV\textures\pilier1.png
+map_Kd C:\Users\Adrien\Desktop\ENIB\S9\REV\textures\Ceramic.jpg
 
-newmtl Ceramic_Ceramic.jpg
-Ns 94.117647
+newmtl MurExtLow
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.000000 0.640000 0.004175
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd C:\Users\Adrien\Desktop\ENIB\S9\REV\textures\danteExt.jpg
+
+newmtl MurExtLow_wall.png.000
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.000000 0.640000 0.004175
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd C:\Users\Adrien\Desktop\ENIB\S9\REV\textures\wall.png
+
+newmtl ceiling
+Ns 96.078431
 Ka 1.000000 1.000000 1.000000
 Kd 0.640000 0.640000 0.640000
 Ks 0.500000 0.500000 0.500000
@@ -21,4 +43,4 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd C:\Users\Adrien\Desktop\ENIB\S9\REV\textures\Ceramic.jpg
+map_Kd C:\Users\Adrien\Desktop\ENIB\S9\REV\textures\dante.jpg

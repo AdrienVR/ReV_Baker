@@ -8,40 +8,47 @@ import simu
 class Fabrique :
 
   def __init__(self,le_monde):
+    
+    self.rdcheight = 0.1
+    self.f1height = self.rdcheight + 2.6
+    self.f2height = self.f1height + 2.3
+    
     self.maison = {
-##	"rdc/garage_rdc" : (2, 18, 0),
-##	"rdc/cave1_rdc" : (4, 13.5, 0),
-##	"rdc/cave2_rdc" : (10, 13, 0),
-##	"rdc/couloir_rdc" : (4, 11.5, 0),
-	"rdc/chambre1_rdc" : (1, 6.5, 0),
-##	"rdc/chambre2_rdc" : (1, 9.5, 0),
-##	"rdc/chambre3_rdc" : (1, 13.5, 0),
-##	"rdc/cuisine_rdc" : (1, 3.5, 0),
-##	"rdc/salle1_rdc" : (2, 1.5, 0),
-##	"rdc/salle2_rdc" : (3.5, 1.5, 0),
-##	"rdc/entree_rdc" : (6, 3, 0),
-##	"rdc/concierge_rdc" : (7.5, 2, 0),
+	"rdc/garage_rdc" : (2, 18, self.rdcheight),
+	"rdc/cave1_rdc" : (4, 13.5, self.rdcheight),
+	"rdc/cave2_rdc" : (10, 19, self.rdcheight),
+	"rdc/couloirs_rdc" : (4, 11.5, self.rdcheight),
+	"rdc/chambre1_rdc" : (1, 6.5, self.rdcheight),
+	"rdc/chambre2_rdc" : (1, 9.5, self.rdcheight),
+	"rdc/chambre3_rdc" : (1, 13.5, self.rdcheight),
+	"rdc/concierge_rdc" : (7.5, 2, self.rdcheight),
+	"rdc/cuisine_rdc" : (1, 3.5, self.rdcheight),
+	"rdc/salle1_rdc" : (2, 1.5, self.rdcheight),
+	"rdc/salle2_rdc" : (3.5, 1.5, self.rdcheight),
+	"rdc/entree_rdc" : (6, 3, self.rdcheight),
 
-	"f1/sol_f1" : (0, 0, 2.3),
-	"f1/couloir_f1" : (0, 0, 2.3),
-	"f1/salon_f1" : (2, 15, 2.3),
-	"f1/eau_f1" : (2, 6, 2.3),
-	"f1/petitSalon_f1" : (0, 0, 2.3),
-	"f1/cafe_f1" : (6, 2, 2.3),
-	"f1/salle1_f1" : (10, 19, 2.3),
+	"f1/sol_f1" : (0, 0, self.f1height),
+	"f1/couloir_f1" : (0, 0, self.f1height),
+	"f1/salon_f1" : (2, 15, self.f1height),
+	"f1/eau_f1" : (2, 6, self.f1height),
+	"f1/petitSalon_f1" : (0, 0, self.f1height),
+	"f1/cafe_f1" : (6, 2, self.f1height),
+	"f1/salle1_f1" : (10, 19, self.f1height),
 
-	"f2/sol_f2" : (0, 0, 4.6),
-	"f2/piscine_f2" : (0, 0, 4.6),
-	"f2/salles_f2" : (3, 15, 4.6),
-	"f2/couloir_f2" : (8, 16, 4.6),
-	"f2/manger_f2" : (6, 4.4, 4.4),
-	"f2/plafond_f2" : (0, 0, 6.6),
+	"f2/sol_f2" : (0, 0, self.f2height),
+	"f2/piscine_f2" : (0, 0, self.f2height),
+	"f2/salles_f2" : (3, 15, self.f2height),
+	"f2/couloir_f2" : (8, 16, self.f2height),
+	"f2/manger_f2" : (6, 4.4, self.f2height),
+	"f2/plafond_f2" : (0, 0, self.f2height + 2),
     }
 
 
     self.transparentMaison = {
-		"f1/eau_f1_transparent" : (2, 6, 2.3),
-		"f1/transparent_f1" : (0, 0, 2.3),
+		"rdc/transparent_rdc" : (0, 0, self.rdcheight),
+		
+		"f1/eau_f1_transparent" : (2, 6, self.f1height),
+		"f1/transparent_f1" : (0, 0, self.f1height),
 	}
 
     self.maisonModels = {}
