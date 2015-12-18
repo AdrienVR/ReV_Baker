@@ -29,7 +29,6 @@ s cave2_rdc_couloir passage 9.45 18.53 0.1
 s exterieur1_rdc_couloir passage -2.64 11.33 0.1
 s exterieur2_rdc_garage passage -2.26 17.15 0.1
 s garage_rdc_exterieur passage 2.83 16.96 0.1
-s garage_rdc_exterieur passage 2.83 16.96 0.1
 s couloir_f1_escalier passage 6.6 10.4 2.8
 s couloir_f1_escalier2 passage 7.52 15.42 2.8
 s salon_f1_escalier2 passage 4.07 17.53 2.8

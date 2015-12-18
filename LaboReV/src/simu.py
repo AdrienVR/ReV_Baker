@@ -4,7 +4,7 @@ import geo
 import visu
 import math
 import graphe
-
+import time
 
 class Monde :
 
@@ -114,7 +114,6 @@ class ActiviteVisiteur(Activite) :
             else :
                 y = 16.60
             self.objet.placer(geo.Vec3((self.objet.repere.o.x,y,z)))
-            print self.objet.repere.o.x
 
         self.cam.placer(geo.Vec3((xCam,yCam,self.objet.repere.o.z+0.8)))
 
@@ -125,24 +124,62 @@ class ActiviteGuide(Activite) :
         self.etat = "aller"
         self.visiteur = visiteur
 
+        self.visite = (
+        "entree_rdc_1",
+        "salle2_rdc_couloir",
+        "salle1_rdc_salle2",
+        "cuisine_rdc_couloir",
+        "chambre1_rdc_couloir",
+        "chambre2_rdc_couloir",
+        "cave1_rdc_couloir",
+        "chambre3_rdc_couloir",
+        "garage_rdc_exterieur",
+        "cave2_rdc_couloir",
+        "salle1_f1_eau",
+        "cafe_f1_petitsalon",
+        "petit_salon_f1_cafe",
+        "salon_f1_1",
+        "salle2_f1_salon",
+        "salle1_f2_couloir",
+        "salle2_f2_couloirb",
+        "piscine_f2_manger",
+        "cafe_f2_manger",
+        "manger_f2_couloir",
+        "sol_f2_couloir",
+        "entree_rdc_1"
+        )
+        self.visiteSuite = 1
+
         self.graphe = graphe.lireGrapheNavigation("graphe.nav")
     	self.dij = graphe.Dijkstra(self.graphe)
-        self.noeudCourant = "entree_rdc_1" #self.graphe.premierSommet()
-        print "noeud initial : " + self.noeudCourant
+        self.noeudCourant = self.visite[0]
         self.objet.placer(geo.Vec3((self.graphe.etiquette(self.noeudCourant).x,self.graphe.etiquette(self.noeudCourant).y,self.graphe.etiquette(self.noeudCourant).z)))
         self.objet.orienter(math.pi/2)
 
-        self.noeudCible = "salle2_f2_couloirb"
+        self.noeudCible = self.visite[1]
         self.parcoursListe = self.dij.trouverChemin(de=self.noeudCourant,a=self.noeudCible)
         self.posList = 0
         self.pointCible = self.parcoursListe[1]
         print self.parcoursListe
-        self.pointCible.y = self.pointCible.y + 1
+        #self.pointCible.y = self.pointCible.y + 1
+
+        self.attenteEnCours = False
+        self.tempsAttente = 3
+        self.dernierTemps = 0
+        self.seuilRaccourcis = 0
+        self.tempsNouvelleVisite = time.time()
+        self.tempsEchecProposition = 5
+        self.distanceEchecProposition = 8
         #print "posX = " + str(self.objet.repere.o.x) + " posY = " + str(self.objet.repere.o.y)+ " cibleX = " + str(self.pointCible.x) + " cibleY = " + str(self.pointCible.y)
 
     def actualiser(self,t,dt):
+        dist = self.objet.repere.o.distance(self.visiteur.repere.o)
+        dist2 = self.pointCible.distance(self.visiteur.repere.o)
+        if dist > self.distanceEchecProposition and dist2 > self.seuilRaccourcis and time.time() > self.tempsNouvelleVisite + self.tempsEchecProposition:
+            self.etat = "raccourcis"
+
         if self.etat == "aller" :
-            dr=dt*0.5
+            dr=dt
             atteint = False
 
             xc = self.objet.repere.o.x - self.pointCible.x
@@ -185,8 +222,44 @@ class ActiviteGuide(Activite) :
                     self.pointCible = self.parcoursListe[self.posList+1]
 
         elif self.etat == "attendre" :
-            pass
+            if not self.attenteEnCours :
+                self.dernierTemps = time.time()
+                self.attenteEnCours = True
 
+            if time.time() > self.dernierTemps + self.tempsAttente :
+                self.attenteEnCours = False
+                if self.visiteSuite+1 < len(self.visite) :
+                    self.noeudCourant = self.visite[self.visiteSuite]
+                    self.visiteSuite += 1
+                    self.noeudCible = self.visite[self.visiteSuite]
+                    self.parcoursListe = self.dij.trouverChemin(de=self.noeudCourant,a=self.noeudCible)
+                    self.posList = 0
+                    self.pointCible = self.parcoursListe[1]
+                    self.etat = "aller"
+                else :
+                    self.etat = "fini"
+        elif self.etat == "fini" :
+            print "fini"
+        elif self.etat == "raccourcis" :
+            bestI = 0
+            i=0
+            best = 5000
+            for point in self.visite :
+                d=self.graphe.etiquette(point).distance(self.visiteur.repere.o)
+                if d<best :
+                    best=d
+                    bestI=i
+                i = i + 1
+            self.seuilRaccourcis = best*1.3
+            self.noeudCible = self.visite[bestI]
+            self.parcoursListe = self.dij.trouverChemin(de=self.noeudCourant,a=self.noeudCible)
+            self.posList = 0
+            self.visiteSuite = bestI
+            if len(self.parcoursListe) >= 2 : self.pointCible = self.parcoursListe[1]
+            else : self.pointCible = self.parcoursListe[0]
+            self.etat = "aller"
+            self.tempsNouvelleVisite = time.time()
+            print "Nouvelle visite"
             #print "posX = " + str(self.objet.repere.o.x) + " posY = " + str(self.objet.repere.o.y)+ " cibleX = " + str(self.pointCible.x) + " cibleY = " + str(self.pointCible.y)
 
 
