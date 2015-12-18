@@ -3,33 +3,124 @@
 # Les sommets
 
 s entree_rdc_1 debut 6.3 1.1 0.1
-s entree_rdc_2 passage 6.3 2.6 0.1
-s couloir_rdc_1 passage 6.3 2.6 0.1
-s couloir_rdc_2 tableau 5.03 1.85 0.1
-s couloir_rdc_3 passage 4.33 3.74 0.1
-s couloir_rdc_4 passage 4.17 3.63 0.1
-s salle1_rdc_1 tableau 3.71 1.59 0.1
-#s p01 passage 0 10 0
-#s p02 passage 0 20 0
-
-#s p10 passage 10 0 0
-#s p11 passage 10 10 0
-#s p12 passage 10 20 0
-
-#s p20 passage 20 0 0
-#s p21 passage 20 10 0
-#s p22 passage 20 20 0
-
+s entree_rdc_2 passage 6.19 2.90 0.1
+s entree_rdc_escalier passage 6.3 4.8 0.1
+s couloir_rdc_entree passage 5.15 2.62 0.1
+s couloir_rdc_1 passage 4.94 3.62 0.1
+s couloir_rdc_salle2a passage 4.14 3.66 0.1
+s salle2_rdc_couloir passage 4.14 1.94 0.1
+s salle2_rdc_salle1 passage 3.11 1.95 0.1
+s salle1_rdc_salle2 passage 1.93 1.83 0.1
+s couloir_rdc_salle2b passage 3.03 3.68 0.1
+s couloir_rdc_cuisine passage 0.97 3.74 0.1
+s cuisine_rdc_couloir passage 0.46 1.39 0.1
+s couloir_rdc_chambre1 passage 4.17 6.59 0.1
+s chambre1_rdc_couloir passage 1.18 6.59 0.1
+s couloir_rdc_chambre2 passage 4.01 9.07 0.1
+s couloir_rdc_2 passage 4.27 11.46 0.1
+s couloir_rdc_cave1 passage 2.52 11.46 0.1
+s cave1_rdc_couloir passage 2.89 13.5 0.1
+s couloir_rdc_chambre3 passage 1.00 11.51 0.1
+s chambre3_rdc_couloir passage 0.48 13.75 0.1
+s chambre2_rdc_couloir passage 2.65 9.08 0.1
+s couloir_rdc_3 passage 6.88 11.61 0.1
+s couloir_rdc_cave2 passage 7.35 18.36 0.1
+s cave2_rdc_couloir passage 9.45 18.53 0.1
+s exterieur1_rdc_couloir passage -2.64 11.33 0.1
+s exterieur2_rdc_garage passage -2.26 17.15 0.1
+s garage_rdc_exterieur passage 2.83 16.96 0.1
+s garage_rdc_exterieur passage 2.83 16.96 0.1
+s couloir_f1_escalier passage 6.6 10.4 2.8
+s couloir_f1_escalier2 passage 7.52 15.42 2.8
+s salon_f1_escalier2 passage 4.07 17.53 2.8
+s salon_f1_1 passage 7.52 15.42 2.8
+s salon_f1_centre passage 2.00 13.72 2.8
+s salon_f1_eau passage -0.41 11.63 2.8
+s petit_salon_f1_salon passage -0.25 1.65 2.8
+s petit_salon_f1_cafe passage 4.24 1.65 2.8
+s cafe_f1_petitsalon passage 6.64 1.71 2.8
+s eau_f1_salle1 passage 3.98 4.45 2.8
+s salle1_f1_eau passage 6.24 3.98 2.8
+s salle2_f1_salon passage 9.72 18.86 2.8
+s escalier2_1 passage 7.27 17.07 3.3
+s escalier2_2 passage 6.61 17.59 3.8
+s escalier2_3 passage 5.77 17.46 4.3
+s couloir_f2_escalier2 passage 5.31 16.23 5.1
+s couloir_f2_1 passage 4.24 15.98 5.1
+s couloir_f2_sol passage 4.21 18.34 5.1
+s couloir_f2_salle1 passage 4.15 16.84 5.1
+s sol_f2_couloir passage 10.12 18.96 5.1
+s salle1_f2_couloir passage 1.47 16.70 5.1
+s couloir_f2_salle2a passage 4.06 15.26 5.1
+s salle2_f2_couloira passage 1.58 15.0 5.1
+s salle2_f2_couloirb passage 1.90 12.30 5.1
+s couloir_f2_salle2b passage 4.27 11.55 5.1
+s couloir_f2_manger passage 5.17 11.46 5.1
+s manger_f2_couloir passage 5.48 7.34 5.1
+s cafe_f2_manger passage 6.22 1.77 5.1
+s piscine_f2_cafe passage 4.13 1.61 5.1
+s piscine_f2_manger passage 3.96 7.30 5.1
 
 # Les arcs
 
 a entree_rdc_1 entree_rdc_2
-a entree_rdc_2 couloir_rdc_1
-a couloir_rdc_1 couloir_rdc_2
-a couloir_rdc_1 couloir_rdc_3
-a couloir_rdc_3 couloir_rdc_4
-a couloir_rdc_4 salle1_rdc_1
-#a p00 p10
-#a p10 p20
-#a p20 p21
-#a p21 p22
+a entree_rdc_2 entree_rdc_escalier
+a entree_rdc_2 couloir_rdc_entree
+a couloir_rdc_entree couloir_rdc_1
+a couloir_rdc_1 couloir_rdc_salle2a
+a couloir_rdc_salle2a salle2_rdc_couloir
+a couloir_rdc_salle2a couloir_rdc_salle2b
+a couloir_rdc_salle2b salle2_rdc_salle1
+a salle2_rdc_couloir salle2_rdc_salle1
+a salle2_rdc_salle1 salle1_rdc_salle2
+a couloir_rdc_salle2b couloir_rdc_cuisine
+a couloir_rdc_cuisine cuisine_rdc_couloir
+a couloir_rdc_salle2a couloir_rdc_chambre1
+a couloir_rdc_chambre1 chambre1_rdc_couloir
+a couloir_rdc_chambre1 couloir_rdc_chambre2
+a couloir_rdc_chambre2 couloir_rdc_2
+a couloir_rdc_2 couloir_rdc_cave1
+a couloir_rdc_cave1 cave1_rdc_couloir
+a couloir_rdc_cave1 couloir_rdc_chambre3
+a couloir_rdc_chambre3 chambre3_rdc_couloir
+a couloir_rdc_chambre2 chambre2_rdc_couloir
+a couloir_rdc_2 couloir_rdc_3
+a couloir_rdc_3 couloir_rdc_cave2
+a couloir_rdc_cave2 cave2_rdc_couloir
+a couloir_rdc_chambre3 exterieur1_rdc_couloir
+a exterieur1_rdc_couloir exterieur2_rdc_garage
+a exterieur2_rdc_garage garage_rdc_exterieur
+a entree_rdc_escalier couloir_f1_escalier
+a couloir_f1_escalier couloir_f1_escalier2
+a couloir_f1_escalier salon_f1_centre
+a couloir_f1_escalier salon_f1_escalier2
+a couloir_f1_escalier2 salon_f1_escalier2
+a couloir_f1_escalier2 salon_f1_1
+a salon_f1_1 salon_f1_centre
+a salon_f1_eau salon_f1_centre
+a salon_f1_eau petit_salon_f1_salon
+a petit_salon_f1_salon petit_salon_f1_cafe
+a petit_salon_f1_cafe cafe_f1_petitsalon
+a petit_salon_f1_cafe eau_f1_salle1
+a eau_f1_salle1 salle1_f1_eau
+a salon_f1_escalier2 salle2_f1_salon
+a couloir_f1_escalier2 escalier2_1
+a escalier2_1 escalier2_2
+a escalier2_2 escalier2_3
+a escalier2_3 couloir_f2_escalier2
+a couloir_f2_escalier2 couloir_f2_1
+a couloir_f2_1 couloir_f2_salle1
+a couloir_f2_salle1 couloir_f2_sol
+a couloir_f2_sol sol_f2_couloir
+a couloir_f2_salle1 salle1_f2_couloir
+a couloir_f2_salle1 couloir_f2_salle2a
+a couloir_f2_salle2a salle2_f2_couloira
+a couloir_f2_salle2b salle2_f2_couloirb
+a salle2_f2_couloira salle2_f2_couloirb
+a salle2_f2_couloirb couloir_f2_manger
+a couloir_f2_escalier2 couloir_f2_manger
+a couloir_f2_manger manger_f2_couloir
+a manger_f2_couloir cafe_f2_manger
+a piscine_f2_cafe cafe_f2_manger
+a piscine_f2_cafe piscine_f2_manger
+a couloir_f2_salle2b piscine_f2_manger

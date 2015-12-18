@@ -179,7 +179,7 @@ class Fabrique :
 
     le_guide = visu.Objet(maillage=visu.Obj(url="../data/obj/pingouin/p.obj"))
     #le_guide.placer(geo.Vec3((6.3,1.1,0.1)))
-    le_guide.orienter(90*math.pi/180.0)
+    #le_guide.orienter(90*math.pi/180.0)
     self.monde.ajouter(decor=le_guide)
     deplacements_guide = simu.ActiviteGuide(id="guide_pingouin", objet=le_guide, visiteur=le_visiteur)
     deplacements_guide.start()
