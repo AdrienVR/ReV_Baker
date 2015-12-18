@@ -177,7 +177,7 @@ class ActiviteGuide(Activite) :
 
             if self.objet.repere.angle > theta+1.1*math.pi : self.objet.orienter(self.objet.repere.angle-math.pi/30.0)
             elif self.objet.repere.angle < theta+0.9*math.pi : self.objet.orienter(self.objet.repere.angle+math.pi/30.0)
-             print self.objet.repere.angle
+            #print self.objet.repere.angle
 
             #self.objet.orienter(theta+math.pi)
 
