@@ -79,7 +79,7 @@ class ActiviteVisiteur(Activite) :
         yCam = self.objet.repere.o.y - self.cam.dist*math.sin(self.objet.repere.angle)
 
         z = self.objet.repere.o.z
-        if self.objet.repere.o.x>= 5.1 and self.objet.repere.o.x<= 7.7 and self.objet.repere.o.y >= 5.1 and self.objet.repere.o.y<=10.2 :
+        if self.objet.repere.o.x>= 5.1 and self.objet.repere.o.x<= 7.7 and self.objet.repere.o.y >= 5.1 and self.objet.repere.o.y<=10.2 and self.objet.repere.o.z <= 2.8:
             z=0.1+(2.8-0.1)*(self.objet.repere.o.y-5.1)/(10.2-5.1)
             self.objet.placer(geo.Vec3((self.objet.repere.o.x,self.objet.repere.o.y,z)))
 
@@ -132,7 +132,7 @@ class ActiviteGuide(Activite) :
         self.objet.placer(geo.Vec3((self.graphe.etiquette(self.noeudCourant).x,self.graphe.etiquette(self.noeudCourant).y,self.graphe.etiquette(self.noeudCourant).z)))
         self.objet.orienter(math.pi/2)
 
-        self.noeudCible = "couloir_f2_escalier2"
+        self.noeudCible = "salle2_f2_couloirb"
         self.parcoursListe = self.dij.trouverChemin(de=self.noeudCourant,a=self.noeudCible)
         self.posList = 0
         self.pointCible = self.parcoursListe[1]

@@ -46,6 +46,20 @@ s escalier2_1 passage 7.27 17.07 3.3
 s escalier2_2 passage 6.61 17.59 3.8
 s escalier2_3 passage 5.77 17.46 4.3
 s couloir_f2_escalier2 passage 5.31 16.23 5.1
+s couloir_f2_1 passage 4.24 15.98 5.1
+s couloir_f2_sol passage 4.21 18.34 5.1
+s couloir_f2_salle1 passage 4.15 16.84 5.1
+s sol_f2_couloir passage 10.12 18.96 5.1
+s salle1_f2_couloir passage 1.47 16.70 5.1
+s couloir_f2_salle2a passage 4.06 15.26 5.1
+s salle2_f2_couloira passage 1.58 15.0 5.1
+s salle2_f2_couloirb passage 1.90 12.30 5.1
+s couloir_f2_salle2b passage 4.27 11.55 5.1
+s couloir_f2_manger passage 5.17 11.46 5.1
+s manger_f2_couloir passage 5.48 7.34 5.1
+s cafe_f2_manger passage 6.22 1.77 5.1
+s piscine_f2_cafe passage 4.13 1.61 5.1
+s piscine_f2_manger passage 3.96 7.30 5.1
 
 # Les arcs
 
@@ -94,3 +108,19 @@ a couloir_f1_escalier2 escalier2_1
 a escalier2_1 escalier2_2
 a escalier2_2 escalier2_3
 a escalier2_3 couloir_f2_escalier2
+a couloir_f2_escalier2 couloir_f2_1
+a couloir_f2_1 couloir_f2_salle1
+a couloir_f2_salle1 couloir_f2_sol
+a couloir_f2_sol sol_f2_couloir
+a couloir_f2_salle1 salle1_f2_couloir
+a couloir_f2_salle1 couloir_f2_salle2a
+a couloir_f2_salle2a salle2_f2_couloira
+a couloir_f2_salle2b salle2_f2_couloirb
+a salle2_f2_couloira salle2_f2_couloirb
+a salle2_f2_couloirb couloir_f2_manger
+a couloir_f2_escalier2 couloir_f2_manger
+a couloir_f2_manger manger_f2_couloir
+a manger_f2_couloir cafe_f2_manger
+a piscine_f2_cafe cafe_f2_manger
+a piscine_f2_cafe piscine_f2_manger
+a couloir_f2_salle2b piscine_f2_manger
