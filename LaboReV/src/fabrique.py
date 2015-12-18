@@ -4,6 +4,8 @@ import math
 import geo
 import visu
 import simu
+import glob, os
+from random import randint
 
 class Fabrique :
 
@@ -43,12 +45,78 @@ class Fabrique :
 	"f2/plafond_f2" : (0, 0, self.f2height + 2),
     }
 
-    self.emplacements_tableaux = {
-        "A1" : (4.55, 1.5, 0.3, "../data/images/Automobile/Amicar.jpg"),
-        "A2" : (3.15, 0.98, 0.3, "../data/images/Automobile/Autobus.jpg"),
-    }
-    self.tableaux = {}
+    self.tableauCoord = [(4.05,1.5,0.3),
+(2.65,0.98,0.3),
+(-1.35,1.34,0.3),
+(-1.35,4.35,0.3),
+(1.51,5.06,0.3),
+(0.56,5.27,0.3),
+(-1.35,7.37,0.3),
+(1.48,8.03,0.3),
+(3.02,5.98,0.3),
+(1.71,8.23,0.3),
+(-0.22,8.23,0.3),
+(1.44,9.93,0.3),
+(-0.17,15.12,0.3),
+(-1.35,12.76,0.3),
+(1.16,13.67,0.3),
+(1.36,12.73,0.3),
+(1.36,12.73,0.3),
+(2.87,15.10,0.3),
+(5.45,14.07,0.3),
+(9.03,19.86,0.3),
+(0.11,19.86,0.3),
+(2.95,19.86,0.3),
+(2.95,15.27,0.3),
+(0.11,15.27,0.3),
+(1.2,20.00,3.2),
+(3.35,19.12,3.2),
+(3.87,20.00,3.2),
+(9.36,18.21,3.2),
+(9.27,19.97,3.2),
+(7.52,15.63,3.2),
+(7.52,13.80,3.2),
+(7.52,12.32,3.2),
+(7.52,10.25,3.2),
+(3.16,4.17,3.2),
+(3.16,5.99,3.2),
+(3.16,8.70,3.2),
+(7.55,1.67,3.2),
+(4.1,3.03,3.2),
+(-0.62,-0.00,3.2),
+(9.28,20.06,5.3),
+(10.79,19.11,5.3),
+(9.27,18.24,5.3),
+(5.92,19.18,5.3),
+(4.37,14.50,5.3),
+(4.37,12.77,5.3),
+(7.56,14.89,5.3),
+(7.56,12.75,5.3),
+(7.56,9.28,5.3),
+(7.56,7.23,5.3),
+(7.56,4.85,5.3),
+(4.34,4.99,5.3),
+(4.08,5.76,5.3),
+(4.08,3.76,5.3),
+(1.54,0.16,5.3),
+(-1.37,2.01,5.3),
+(-1.37,5.06,5.3),
+(-1.37,8.25,5.3),
+(1.33,15.99,5.3),
+(1.36,16.09,5.3),
+                          (1.83,15.99,4.9),
+                          (1.83,15.99,4.9),
+                          (1.83,15.99,4.9),
+                          (1.86,16.09,4.9)]
 
+    self.rotationTab = [0,0,1.57,1.57,0,0,1.57,0,1.57,0,0,0,0,0,1.57,1.57,1.57,0,1.57,0,0,0,0,0,
+                        0,0,0,0,0,1.57,1.57,1.57,1.57,1.57,1.57,1.57,1.57,1.57,0,0,1.57,0,0,1.57,1.57,1.57,1.57,1.57,
+                        1.57,1.57,1.57,1.57,1.57,0,1.57,1.57,1.57,0,1.57,1.57,1.57,1.57,1.57]
+
+    self.textureNames = []
+
+
+    self.tableaux = []
 
     self.transparentMaison = {
 		"rdc/transparent_rdc" : (0, 0, self.rdcheight),
@@ -59,6 +127,7 @@ class Fabrique :
 
     self.maisonModels = {}
     self.monde = le_monde
+    le_monde.fabrique = self
 
   def fabriquer(self):
 
@@ -68,12 +137,26 @@ class Fabrique :
     le_ciel = visu.Objet(maillage = visu.Ciel())
     self.monde.ajouterTransparent(decor=le_ciel)
 
-    for emplacement_tableau in self.emplacements_tableaux.keys() :
-        self.tableaux[emplacement_tableau] = visu.Objet(maillage=visu.Tableau(recto=self.emplacements_tableaux[emplacement_tableau][3],\
-                                                      verso=self.emplacements_tableaux[emplacement_tableau][3],\
-                                                      largeur=1.0,hauteur=1.0,epaisseur=0.1))
-        self.tableaux[emplacement_tableau].placer(geo.Vec3((self.emplacements_tableaux[emplacement_tableau][0],self.emplacements_tableaux[emplacement_tableau][1],self.emplacements_tableaux[emplacement_tableau][2])))
-        self.monde.ajouter(decor=self.tableaux[emplacement_tableau])
+    os.chdir("../data/images")
+
+    for directory in ("Automobile", "Loisirs", "Mode", "Politique", "Spectacle", "Sport", "Tableaux"):
+      os.chdir(directory)
+      for file in glob.glob("*.jpg"):
+          self.textureNames.append(directory + "/"+ file)
+      os.chdir("..")
+
+    os.chdir("../../src")
+
+    print len(self.textureNames), len(self.tableauCoord)
+    for indexTableau in range(len(self.textureNames)) :
+        self.tableaux.append(visu.Objet(maillage=visu.Tableau(recto="../data/images/" + self.textureNames[indexTableau],\
+                                                      verso="../data/images/" +self.textureNames[indexTableau],\
+                                                      largeur=1.0,hauteur=1.0,epaisseur=0.1)))
+        self.tableaux[indexTableau].orienter(self.rotationTab[indexTableau])
+        if (self.rotationTab[indexTableau] != 0):
+          self.tableauCoord[indexTableau] = (self.tableauCoord[indexTableau][0] + 0.5,self.tableauCoord[indexTableau][1]- 0.5, self.tableauCoord[indexTableau][2])
+        self.tableaux[indexTableau].placer(geo.Vec3(self.tableauCoord[indexTableau]))
+        self.monde.ajouter(decor=self.tableaux[indexTableau])
 
     for piece in self.maison.keys():
       self.maisonModels[piece] = visu.Objet(maillage=visu.ObjY(url="../data/baker/"+piece+".obj"))
@@ -106,3 +189,10 @@ class Fabrique :
     #une_activite = simu.Activite(id="act-01")
     #une_activite.start()
     #self.monde.ajouter(activite=une_activite)
+
+  def changeTableaux(self):
+        m_index = randint(0, 61)
+        for indexTableau in range(len(self.tableaux)) :
+            textureIndex = (indexTableau + m_index)%len(self.textureNames)
+            self.tableaux[indexTableau].maillage.changeTexture("../data/images/" + self.textureNames[textureIndex])
+        print "changement des tableaux effectué"

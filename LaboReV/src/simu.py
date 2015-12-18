@@ -16,6 +16,7 @@ class Monde :
     self.activites = []
     self.annuaire = {}
     self.visiteur = visu.Objet()
+    self.fabrique = None
 
   def dessiner(self):
     self.camera.lookAt()
@@ -114,6 +115,7 @@ class ActiviteVisiteur(Activite) :
             else :
                 y = 16.60
             self.objet.placer(geo.Vec3((self.objet.repere.o.x,y,z)))
+            print self.objet.repere.o.x
 
         self.cam.placer(geo.Vec3((xCam,yCam,self.objet.repere.o.z+0.8)))
 
