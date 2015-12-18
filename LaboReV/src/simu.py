@@ -115,7 +115,6 @@ class ActiviteVisiteur(Activite) :
             else :
                 y = 16.60
             self.objet.placer(geo.Vec3((self.objet.repere.o.x,y,z)))
-            print self.objet.repere.o.x
 
         self.cam.placer(geo.Vec3((xCam,yCam,self.objet.repere.o.z+0.8)))
 
@@ -162,7 +161,6 @@ class ActiviteGuide(Activite) :
         self.parcoursListe = self.dij.trouverChemin(de=self.noeudCourant,a=self.noeudCible)
         self.posList = 0
         self.pointCible = self.parcoursListe[1]
-        print self.parcoursListe
         #self.pointCible.y = self.pointCible.y + 1
 
         self.attenteEnCours = False
@@ -241,7 +239,7 @@ class ActiviteGuide(Activite) :
                 else :
                     self.etat = "fini"
         elif self.etat == "fini" :
-            print "fini"
+            pass
         elif self.etat == "raccourcis" :
             bestI = 0
             i=0
@@ -261,7 +259,6 @@ class ActiviteGuide(Activite) :
             else : self.pointCible = self.parcoursListe[0]
             self.etat = "aller"
             self.tempsNouvelleVisite = time.time()
-            print "Nouvelle visite"
             #print "posX = " + str(self.objet.repere.o.x) + " posY = " + str(self.objet.repere.o.y)+ " cibleX = " + str(self.pointCible.x) + " cibleY = " + str(self.pointCible.y)
 
 
