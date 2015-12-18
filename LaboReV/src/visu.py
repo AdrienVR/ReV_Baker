@@ -266,6 +266,10 @@ class Tableau(Maillage) :
 		self.hauteur = attributs.get('hauteur',1.0)
 		self.epaisseur = attributs.get('epaisseur',0.0)
 
+	def changeTexture(self, textureName):
+		self.recto = TextureCatalog().loadTexture(textureName)
+		self.verso = TextureCatalog().loadTexture(textureName)
+
 	def draw(self):
 		if self.perceptible :
 			glPushMatrix()

@@ -66,6 +66,8 @@ class Wimp :
 			self.versHaut = True
 		elif symbol == pyglet.window.key.B :
 			self.versBas  = True
+		elif symbol == pyglet.window.key.N :
+			self.monde.fabrique.changeTableaux()
 		elif symbol == pyglet.window.key.T :
 			self.monde.notifier()
 		elif symbol == pyglet.window.key.C :

@@ -16,6 +16,7 @@ class Monde :
     self.activites = []
     self.annuaire = {}
     self.visiteur = visu.Objet()
+    self.fabrique = None
 
   def dessiner(self):
     self.camera.lookAt()
@@ -130,7 +131,7 @@ class ActiviteGuide(Activite) :
 
             if self.objet.repere.angle > theta+1.1*math.pi : self.objet.orienter(self.objet.repere.angle-math.pi/30.0)
             elif self.objet.repere.angle < theta+0.9*math.pi : self.objet.orienter(self.objet.repere.angle+math.pi/30.0)
-            print self.objet.repere.angle
+            #print self.objet.repere.angle
 
             #self.objet.orienter(theta+math.pi)
 
@@ -142,7 +143,8 @@ class ActiviteGuide(Activite) :
                     self.pointCible = self.parcoursListe[self.posList+1]
 
         elif self.etat == "attendre" :
-            print "attendre"
+            #print "attendre"
+            pass
 
             #print "posX = " + str(self.objet.repere.o.x) + " posY = " + str(self.objet.repere.o.y)+ " cibleX = " + str(self.pointCible.x) + " cibleY = " + str(self.pointCible.y)
 
